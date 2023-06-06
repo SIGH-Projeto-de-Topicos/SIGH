@@ -23,6 +23,10 @@
 			<input type="text" name="name" id="name" value="" placeholder="Digite seu nome">
 		</div>
 		<div class="form-container">
+			<label for="born">Data de nascimento:</label>
+			<input type="date" name="born" id="born" value="">
+		</div>
+		<div class="form-container">
 			<label for="phone">Número de telefone:</label>
 			<input type="tel" name="phone" id="phone" value="" pattern="([0-9]{3}) [0-9]{(4|5)-[0-9]{4}" placeholder="Digite seu número de telefone">
 		</div>
