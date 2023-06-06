@@ -98,7 +98,7 @@
         </div>
     </div>
     <div class="button-container2">
-        <button class="button1" disabled="disabled">Cadastre-se para buscar médicos pŕoximos de você</button>
+        <button class="button1" onClick="window.open('cadastro.jsp', '_parent')">Cadastre-se para buscar médicos pŕoximos de você</button>
     </div>
     <div id="link-container-container-container">
     	<div class="link-container-container">
