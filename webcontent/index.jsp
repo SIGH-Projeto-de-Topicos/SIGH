@@ -54,19 +54,16 @@
 	}
 %>
 
-<% 
-	session.setAttribute("especialidades", especialidades);
-	session.setAttribute("cidades", cidades);
-	session.setAttribute("convenios", convenios);
-%>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/style.css">
     
     <script src="js/index.js" type="text/javascript"></script>
+    
+    <link rel="icon" type="image/x-icon" href="images/favicon.png">
 
     <meta charset="UTF-8">
 
@@ -77,7 +74,7 @@
         <img src="images/logo.png">
         <div class="button-container">
             <button class="button1" onClick="loginForm()">Entrar</button>
-            <button class="button2" disabled="disabled">Cadastre-se</button>
+            <button class="button2" onClick="window.open('cadastro.jsp', '_parent')">Cadastre-se</button>
         </div>
     </header>
     <div class="hero">

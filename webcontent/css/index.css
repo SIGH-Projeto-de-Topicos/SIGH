@@ -2,40 +2,6 @@
 
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
 
-body {
-    margin: 0;
-    padding: 0;
-}
-
-button {
-    padding: 0 20px;
-
-    align-items: center;
-
-    border-radius: 3px;
-
-    font-family: 'Open Sans', sans-serif;
-    font-size: 14px;
-    font-weight: 400;
-
-}
-
-.button1 {
-    line-height: 32px;
-
-    background-color: #0000;
-    border: 2px solid #F4A629;
-    color: #F4A629;
-}
-
-.button2 {
-    line-height: 36px;
-
-    background: linear-gradient(180deg, #EAA61E 0%, rgba(234, 166, 30, 0) 100%), #E6890E;
-    border: none;
-    color: #fff;
-}
-
 header {
     display: flex;
 
@@ -60,6 +26,59 @@ header {
         align-items: center;
         justify-content: space-between;
         gap: 20px;
+    }
+    
+footer {
+    display: flex;
+
+    height: 150px;
+    padding: 0 130px;
+    
+    align-items: center;
+    justify-content: space-between;
+
+    box-shadow: 0px -1px 1px rgba(0, 0, 0, 0.1);
+}
+
+    footer .content {
+        display: flex;
+        
+        align-items: center;
+        justify-content: space-between;
+        gap: 30px;
+    }
+
+        .content img {
+            height: 30px;
+        }
+
+        .content ul {
+            display: flex;
+
+            padding: 0;
+
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+
+            list-style-type: none;
+        }
+
+            .content ul li {
+                font-family: 'Open Sans', sans-serif;
+                font-size: 14px;
+            }
+
+                .content ul li a {
+                    text-decoration: none;
+                    color: #637381;
+                }
+
+    footer p {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 14px;
+
+        color: #637381;
     }
 
 .hero {
@@ -104,6 +123,8 @@ header {
 
         flex-direction: column;
         align-items: center;
+        
+        border-radius: 4px;
     }
 
         .card .image-container {
@@ -191,56 +212,3 @@ header {
                     text-decoration: none;
                     color: #007ace;
                 }
-
-footer {
-    display: flex;
-
-    height: 150px;
-    padding: 0 130px;
-    
-    align-items: center;
-    justify-content: space-between;
-
-    box-shadow: 0px -1px 1px rgba(0, 0, 0, 0.1);
-}
-
-    footer .content {
-        display: flex;
-        
-        align-items: center;
-        justify-content: space-between;
-        gap: 30px;
-    }
-
-        .content img {
-            height: 30px;
-        }
-
-        .content ul {
-            display: flex;
-
-            padding: 0;
-
-            align-items: center;
-            justify-content: space-between;
-            gap: 30px;
-
-            list-style-type: none;
-        }
-
-            .content ul li {
-                font-family: 'Open Sans', sans-serif;
-                font-size: 14px;
-            }
-
-                .content ul li a {
-                    text-decoration: none;
-                    color: #637381;
-                }
-
-    footer p {
-        font-family: 'Open Sans', sans-serif;
-        font-size: 14px;
-
-        color: #637381;
-    }

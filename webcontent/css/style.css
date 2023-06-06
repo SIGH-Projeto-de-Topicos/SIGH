@@ -1,0 +1,41 @@
+@charset "UTF-8";
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+button {
+    padding: 0 20px;
+
+    align-items: center;
+
+    border-radius: 3px;
+
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.button1 {
+    line-height: 32px;
+
+    background-color: #0000;
+    border: 2px solid #F4A629;
+    color: #F4A629;
+}
+
+.button2 {
+    line-height: 36px;
+
+    background: linear-gradient(180deg, #EAA61E 0%, rgba(234, 166, 30, 0) 100%), #E6890E;
+    border: none;
+    color: #fff;   
+}
+
+a {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 14px;
+	text-decoration: none;
+	color: #007ace;
+}
