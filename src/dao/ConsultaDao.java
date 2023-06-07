@@ -7,12 +7,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class ConsultaDao {
+	Consulta c = null;
+	
 	public boolean insert(Consulta c){
 		try {
 			Conexao con = null;
 			con = new Conexao();
-			con.executeUpdate("INSERT INTO consultas VALUES("+ c.getLocal() + "," + c.getData() + "))";
-			
+			c.setID_consulta(con.retornaIDMax("paciente"));
+			con.executeUpdate("INSERT INTO consultas VALUES("+c.getModalidade()+","+ c.getEspecialidade()+","+c.getLocal() + "," + c.getData() +"," c.getID_paciente()+"))";
 			con.fecharConexao();
 			return true;
 		}catch(SQLException e) {
@@ -21,11 +23,11 @@ public class ConsultaDao {
 		}
 	}
 	
-	public ResultSet Query(){
+	public ResultSet Query(String ID_paciente){
 		Conexao con = null;
 		try {
 			con = new Conexao();
-			ResultSet Rset = con.executeQuery("SELECT * FROM consulta WHERE Id_paciente =" + c.getID_paciente());
+			ResultSet Rset = con.executeQuery("SELECT * FROM consulta WHERE Id_paciente =" + ID_paciente + ";");
 			con.fecharConexao();
 			return Rset;
 		}catch(SQLException e) {
@@ -33,11 +35,11 @@ public class ConsultaDao {
 			return null;	
 		}
 	}
-	public void delete() {
+	public void delete(Consulta c) {
 		Conexao con = null;
 			try {
 				con = new Conexao();
-				con.executeUpdate("DELETE FROM paciente WHERE Id_paciente =" + c.getID_paciente());
+				con.executeUpdate("DELETE FROM paciente WHERE Id_paciente =" + c.getID_consulta());
 			}catch(SQLException e){
 				System.out.print("erro ao excluir consulta");
 			}
