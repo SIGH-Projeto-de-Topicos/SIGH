@@ -15,7 +15,9 @@ public class Conexao {
 
     public Conexao(String servidor, String database, String user, String password) throws SQLException {
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            Class.forName("com.mysql.cj.jdbc.Driver")
+
             connection = DriverManager.getConnection("jdbc:mysql://" + servidor + "/" + database, user, password);
         } catch (ClassNotFoundException ex) {
             System.out.println("Nao foi possıvel encontrar a classe do " + "Driver do MySQL");
@@ -39,8 +41,9 @@ public class Conexao {
         } catch (ClassNotFoundException ex) {
             System.out.println("Nao foi possıvel encontrar a classe " + "do Driver do MySQL" + ex);
         } catch (SQLException ex) {
-            System.out.println("Nao foi poss´ıvel conectar ao servidor" + ex);
+            System.out.println("Nao foi possível conectar ao servidor" + ex);
         }
+      
         try {
             statement = connection.createStatement();
         } catch (SQLException ex) {

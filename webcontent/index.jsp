@@ -38,8 +38,7 @@
 		"Mediservice",
 		"Saúde Caixa",
 		"Omint",
-		"Sulamerica"
-	};
+		"Sulamerica"};
 	
 	public String generateLinks(String[] list) {
 		String ul = "<ul class='link-container'>";
