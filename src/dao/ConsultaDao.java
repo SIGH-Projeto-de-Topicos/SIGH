@@ -14,7 +14,7 @@ public class ConsultaDao {
 			Conexao con = null;
 			con = new Conexao();
 			c.setID_consulta(con.retornaIDMax("paciente"));
-			con.executeUpdate("INSERT INTO consultas VALUES("+c.getModalidade()+","+ c.getEspecialidade()+","+c.getLocal() + "," + c.getData() +"," c.getID_paciente()+"))";
+			con.executeUpdate("INSERT INTO consultas VALUES("+c.getModalidade()+","+ c.getEspecialidade()+"," + "," + c.getData() + ")");
 			con.fecharConexao();
 			return true;
 		}catch(SQLException e) {
@@ -44,13 +44,12 @@ public class ConsultaDao {
 				System.out.print("erro ao excluir consulta");
 			}
 		}
-	}
 	
 	public void update(Consulta c) {
 		try {
 			Conexao con = null;
 			con = new Conexao();
-			con.executeUpdate("UPDATE paciente SET local =" + c.getLocal() +"data"+ "=" + c.getData() + "WHERE Id_consulta=" + c.getID_consulta());
+			con.executeUpdate("UPDATE paciente SET local =" +"data"+ "=" + c.getData() + "WHERE Id_consulta=" + c.getID_consulta());
 		}catch(SQLException e) {
 			
 		}
