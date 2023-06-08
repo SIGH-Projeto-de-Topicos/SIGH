@@ -12,7 +12,7 @@ public class pacienteDao{
 		try {
 			con = new Conexao();
 			p.setID_paciente(con.retornaIDMax("paciente"));
-			con.executeUpdate("INSERT INTO pacientes VALUES (" + p.getNome() + "," + p.getEmail() + "," + p.getDatNasc() + ","+ p.getN_tel() + "," + p.getSenha() + ");");
+			con.executeUpdate("INSERT INTO pacientes VALUES (" + p.getID_paciente() + "," + p.getNome() + "," + p.getEmail() + "," + p.getDatNasc() + ","+ p.getN_tel() + "," + p.getSenha() + ");");
 			con.fecharConexao();
 			return true;
 		}catch(SQLException e) {
