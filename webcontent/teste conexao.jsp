@@ -9,6 +9,11 @@ try {
 	ResultSet rs = conn.executeQuery("SELECT * FROM pacientes;");			
 	while (rs.next()) {			
 		System.out.println("id: " + rs.getInt("id"));
+		System.out.println("nome: " + rs.getString("nome"));
+		System.out.println("email: " + rs.getString("email"));
+		System.out.println("telefone: " + rs.getString("telefone"));
+		System.out.println("senha: " + rs.getString("senha"));
+		
 		System.out.println("\n\n\n");
 	}
 	

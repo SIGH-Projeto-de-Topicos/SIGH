@@ -6,11 +6,13 @@
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="css/cadastro.css">
 	
+	<script src="js/cadastro.js" type="text/javascript"></script>
+	
 	<link rel="icon" type="image/x-icon" href="images/favicon.png">
 	
 	<meta charset="UTF-8">
 	
-	<title>Cadastro</title>
+	<title>Cadastre-se</title>
 </head>
 <body>
 	<form id="card" method="POST" action="#">
@@ -20,29 +22,29 @@
 		</div>
 		<div class="form-container">
 			<label for="name">Nome:</label>
-			<input type="text" name="name" id="name" value="" placeholder="Digite seu nome">
+			<input type="text" name="name" id="name" value="" placeholder="Digite seu nome" maxlength="45" required="required">
 		</div>
 		<div class="form-container">
 			<label for="born">Data de nascimento:</label>
-			<input type="date" name="born" id="born" value="">
+			<input type="date" name="born" id="born" value="" required="required">
 		</div>
 		<div class="form-container">
 			<label for="phone">Número de telefone:</label>
-			<input type="tel" name="phone" id="phone" value="" pattern="([0-9]{3}) [0-9]{(4|5)-[0-9]{4}" placeholder="Digite seu número de telefone">
+			<input type="tel" name="phone" id="phone" value="" maxlength="15" placeholder="(00) 00000-0000" onInput="formatarNumero()" required="required">
 		</div>
 		<div class="form-container">
 			<label for="email">Email:</label>
-			<input type="email" name="email" id="email" value="" placeholder="Digite seu email">
+			<input type="email" name="email" id="email" value="" maxlength="45" placeholder="Digite seu email" required="required">
 		</div>
 		<div class="form-container">
 			<label for="passwowd">Senha:</label>
-			<input type="password" name="password" id="password" value="" placeholder="Digite seu senha">
+			<input type="password" name="password" id="password" value="" maxlength="45" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Deve conter, pelo menos, um número, uma letra maiúscula, uma letra minúscula e 8 ou mais caracteres" placeholder="Digite sua senha" required="required">
 		</div>
 		<div class="form-container">
 			<label for="confirm-passwowd">Confirme a sua senha:</label>
-			<input type="password" name="confirm-password" id="confirm-password" value="" placeholder="Repita a senha">
+			<input type="password" name="confirm-password" id="confirm-password" value="" placeholder="Repita a senha" required="required">
 		</div>
-		<button type="submit" class="button2">Enviar</button>	
-	</form>
+		<button class="button2" id="submit" onclick="send(submit)">Enviar</button>
+	</form> 
 </body>
 </html>
