@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<%! String[] especialidades = {
+<%! 
+	String[] especialidades = {
 		"Médico clínico",
         "Médico pediatra",
         "Médico cardiologista",
@@ -39,18 +40,17 @@
 		"Saúde Caixa",
 		"Omint",
 		"Sulamerica"};
-	
-	public String generateLinks(String[] list) {
-		String ul = "<ul class='link-container'>";
-		
-		for (String item : list) {
-			ul += "<li class='link'><a href='#'>" + item + "</a></li>";	
+		public String generateLinks(String[] list) {
+			String ul = "<ul class='link-container'>";
+			
+			for (String item : list) {
+				ul += "<li class='link'><a href='#'>" + item + "</a></li>";	
+			}
+			
+			ul += "</ul>";
+			
+			return ul;
 		}
-		
-		ul += "</ul>";
-		
-		return ul;
-	}
 %>
 
 <!DOCTYPE html>
@@ -101,16 +101,16 @@
     </div>
     <div id="link-container-container-container">
     	<div class="link-container-container">
-    		<h2>Especialidades Médicas</h2>
-    		<%= generateLinks(especialidades) %>
+    		<h2>Especialidades Médicas</h2>	
+    		<%=generateLinks(especialidades)%>
     	</div>
     	<div class="link-container-container">
     		<h2>Cidades</h2>
-    		<%= generateLinks(cidades) %>
+    		<%=generateLinks(cidades) %>
     	</div>
     	<div class="link-container-container">
     		<h2>Convênios</h2>
-    		<%= generateLinks(convenios) %>
+    		<%=generateLinks(convenios) %>
     	</div>
     </div>
     <footer>

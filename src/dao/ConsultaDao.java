@@ -43,13 +43,12 @@ public class ConsultaDao {
 		}catch(SQLException e){
 			System.out.print("erro ao excluir consulta");
 		}
-	}
 	
 	public void update(Consulta c) {
 		try {
 			Conexao con = null;
 			con = new Conexao();
-			con.executeUpdate("UPDATE paciente SET clinica =" + c.getClinica() +"data"+ "=" + c.getData() + "WHERE Id_consulta=" + c.getID_consulta());
+			con.executeUpdate("UPDATE paciente SET local =" +"data"+ "=" + c.getData() + "WHERE Id_consulta=" + c.getID_consulta());
 		}catch(SQLException e) {
 			
 		}

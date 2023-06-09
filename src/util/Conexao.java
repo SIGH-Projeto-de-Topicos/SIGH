@@ -2,16 +2,21 @@ package util;
 //Classes necessárias para uso de Banco de dados //
 
 import java.sql.*;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 //Início da classe de conexão//
 public class Conexao {
 
-    public static String status = "Não conectou...";
-
+    public String status = "Não conectou...";
+    public static LocalDate date = LocalDate.now();
+    public static LocalTime time = LocalTime.now();
+    
 //Método Construtor da Classe//
 //Método de Conexão//
     private Connection connection;
     private Statement statement;
+    
 
     public Conexao(String servidor, String database, String user, String password) throws SQLException {
         try {
@@ -111,5 +116,8 @@ public class Conexao {
 
             return 0;
         }
+    }
+    public String status(String in_Class, String action){
+    	return this.status = in_Class + " in function:"+ action +"\n" + "date:" + Conexao.date + "\ntime:" + Conexao.time;
     }
 }

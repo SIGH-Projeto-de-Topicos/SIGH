@@ -1,6 +1,6 @@
 package model;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Paciente {
 	private Integer ID_paciente;
@@ -10,16 +10,15 @@ public class Paciente {
 	private String n_tel;
 	private String senha;
 	
-	public Paciente(String nome, String email, Date datNasc, String n_tel, String senha){
+	public Paciente(int ID_paciente, String nome, String email, Date datNasc, String n_tel, String senha){
+		setID_paciente(ID_paciente);
 		setNome(nome);
 		setEmail(email);
 		setSenha(senha);
 		setDatNasc(datNasc);
 		setN_tel(n_tel);
 	}
-	
-	public Paciente(int ID_paciente, String nome, String email, Date datNasc, String n_tel, String senha){
-		setID_paciente(ID_paciente);
+	public Paciente(String nome, String email, Date datNasc, String n_tel, String senha){
 		setNome(nome);
 		setEmail(email);
 		setSenha(senha);
