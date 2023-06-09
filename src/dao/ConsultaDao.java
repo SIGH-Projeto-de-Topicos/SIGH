@@ -14,7 +14,7 @@ public class ConsultaDao {
 			Conexao con = null;
 			con = new Conexao();
 			c.setID_consulta(con.retornaIDMax("paciente"));
-			con.executeUpdate("INSERT INTO consultas VALUES("+c.getModalidade()+","+ c.getEspecialidade()+"," + "," + c.getData() + ")");
+			con.executeUpdate("INSERT INTO consultas VALUES(" + c.getID_consulta()  + "," + c.getModalidade() + "," + c.getEspecialidade()+"," + c.getClinica() + "," + c.getData() + "," + c.getID_paciente() + ")");
 			con.fecharConexao();
 			return true;
 		}catch(SQLException e) {
@@ -36,13 +36,12 @@ public class ConsultaDao {
 		}
 	}
 	public void delete(Consulta c) {
-		Conexao con = null;
-			try {
-				con = new Conexao();
-				con.executeUpdate("DELETE FROM paciente WHERE Id_paciente =" + c.getID_consulta());
-			}catch(SQLException e){
-				System.out.print("erro ao excluir consulta");
-			}
+		try {
+			Conexao con = null;
+			con = new Conexao();
+			con.executeUpdate("DELETE FROM paciente WHERE Id_paciente =" + c.getID_consulta());
+		}catch(SQLException e){
+			System.out.print("erro ao excluir consulta");
 		}
 	
 	public void update(Consulta c) {

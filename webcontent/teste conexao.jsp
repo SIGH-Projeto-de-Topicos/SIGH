@@ -7,6 +7,7 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%! Conexao conn = new Conexao(); %>
 <%
 Conexao con = null;
 Paciente p = new Paciente(request.getParameter("nome"), request.getParameter("email"),  Date.valueOf(LocalDate.parse(request.getParameter("dataNasc"),DateTimeFormatter.ofPattern("d /MM/ YYYY"))), request.getParameter("fone"), request.getParameter("senha"));
