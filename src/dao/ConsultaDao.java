@@ -2,7 +2,6 @@ package dao;
 
 import util.Conexao;
 import model.Consulta;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -13,8 +12,8 @@ public class ConsultaDao {
 		try {
 			Conexao con = null;
 			con = new Conexao();
-			c.setID_consulta(con.retornaIDMax("paciente"));
-			con.executeUpdate("INSERT INTO consultas VALUES("+c.getModalidade()+","+ c.getEspecialidade()+"," + "," + c.getData() + ")");
+			c.setID_consulta(con.retornaIDMax("consulta"));
+			con.executeUpdate("INSERT INTO consultas(id,clinica,data,hora,especialidade,modalidade,paciente_id) VALUES("+c.getID_consulta()+",\'"+c.getClinica()+"\',"+ c.getData()+ "," +c.getHora()+ ",\'" +c.getEspecialidade()+ "\',\'" +c.getModalidade()+"\',"+ c.getID_paciente()+")");
 			con.fecharConexao();
 			return true;
 		}catch(SQLException e) {
@@ -49,7 +48,7 @@ public class ConsultaDao {
 		try {
 			Conexao con = null;
 			con = new Conexao();
-			con.executeUpdate("UPDATE paciente SET local =" +"data"+ "=" + c.getData() + "WHERE Id_consulta=" + c.getID_consulta());
+			con.executeUpdate("UPDATE paciente SET clinica =\'"+ c.getClinica() +"\' data"+ "=" + c.getData() + "WHERE Id_consulta=" + c.getID_consulta());
 		}catch(SQLException e) {
 			
 		}

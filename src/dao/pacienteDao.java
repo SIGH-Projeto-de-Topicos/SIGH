@@ -7,15 +7,20 @@ import java.sql.SQLException;
 import model.Paciente;
 
 public class pacienteDao{
-	
+	Conexao con = null;
 	public boolean insert(Paciente p){
-		Conexao con = null;
 		try {
 			con = new Conexao();
-			p.setID_paciente(con.retornaIDMax("paciente"));
-			con.executeUpdate("INSERT INTO pacientes VALUES (" + p.getNome() + "," + p.getEmail() + "," + p.getDatNasc() + ","+ p.getN_tel() + "," + p.getSenha() + ");");
-			con.status("PacienteDao","Insert");
+			p.setID_paciente(con.retornaIDMax("pacientes"));
+			con.executeUpdate("INSERT INTO pacientes(id,nome,email,nascimento,telefone,senha) VALUES ("+ 
+			p.getID_paciente() 
+			+",\'"+ p.getNome() + "\',\'" 
+			+ p.getEmail() + "\',\'"
+			+ p.getDatNasc() + "\',\'"
+			+ p.getN_tel() + "\',\'" 
+			+ p.getSenha() + "\');");
 			con.fecharConexao();
+			con.log("PacienteDao", "insert");
 			return true;
 		}catch(SQLException e) {
 			System.out.print("erro ao inserir dados na tabela");
@@ -27,8 +32,7 @@ public class pacienteDao{
 		Conexao con = null;
 		try {
 			con = new Conexao();
-			ResultSet rSet = con.executeQuery("SELECT * FROM consulta WHERE email =" + email + "AND senha =" + senha + ";");
-			con.status("PacienteDao","Login");
+			ResultSet rSet = con.executeQuery("SELECT * FROM consultas WHERE email =" + email + "AND senha =" + senha + ";");
 			con.fecharConexao();
 			
 			if (rSet.next()) {
@@ -54,8 +58,7 @@ public class pacienteDao{
 		Conexao con = null;
 		try {
 			con = new Conexao();
-			con.executeUpdate("UPDATE pacientes SET email =" + p.getEmail() + "," + "telefone =" + p.getN_tel() + "\n" + "WHERE" + "id"+ "=" + p.getID_paciente());
-			con.status("PacienteDao","update");;
+			con.executeUpdate("UPDATE pacientes SET email =\'" + p.getEmail() + "\'," + "telefone =\'" + p.getN_tel() + "\'\n" + "WHERE id"+ "=" + p.getID_paciente());
 			con.fecharConexao();
 		}catch(SQLException e) {
 			System.out.print("erro ao atualizar dados na tabela");
@@ -67,7 +70,6 @@ public class pacienteDao{
 		try {
 			con = new Conexao();
 			con.executeUpdate("DELETE FROM pacientes WHERE id =" + p.getID_paciente());
-			con.status("PacienteDao","delete");
 		}catch(SQLException e){
 			System.out.print("erro ao excluir usuário");
 		}
