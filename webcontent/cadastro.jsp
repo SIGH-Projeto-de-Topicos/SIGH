@@ -15,36 +15,42 @@
 	<title>Cadastre-se</title>
 </head>
 <body>
-	<form id="card" method="POST" action="#">
+	<form id="card" method="POST" action="pacientes/cadastro.jsp">
 		<div class="title">
 			<h1>Cadastre-se</h1>
 			<p>Marque e gerencie todas as suas consultas em um só lugar.</p>
 		</div>
 		<div class="form-container">
+			<span class="alert" id="alert-name" hidden="true">"Nome" não pode estar vazio</span>
 			<label for="name">Nome:</label>
-			<input type="text" name="name" id="name" value="" placeholder="Digite seu nome" maxlength="45" required="required">
+			<input type="text" name="name" id="name" placeholder="Digite seu nome" maxlength="45" onInput="checkButton()" required="required">
 		</div>
 		<div class="form-container">
+			<span class="alert" id="alert-born" hidden="true">Digite uma data de nascimento válida</span>
 			<label for="born">Data de nascimento:</label>
-			<input type="date" name="born" id="born" value="" required="required">
+			<input type="date" name="born" id="born" onInput="checkButton()" required="required">
 		</div>
 		<div class="form-container">
+			<span class="alert" id="alert-phone" hidden="true">Digite um telefone válido</span>
 			<label for="phone">Número de telefone:</label>
-			<input type="tel" name="phone" id="phone" value="" maxlength="15" placeholder="(00) 00000-0000" onInput="formatarNumero()" required="required">
+			<input type="tel" name="phone" id="phone" value="" maxlength="15" placeholder="(00) 00000-0000" onInput="checkButton()" required="required">
 		</div>
 		<div class="form-container">
+			<span class="alert" id="alert-email" hidden="true">Digite um email válido</span>
 			<label for="email">Email:</label>
-			<input type="email" name="email" id="email" value="" maxlength="45" placeholder="Digite seu email" required="required">
+			<input type="email" name="email" id="email" maxlength="45" placeholder="Digite seu email" onInput="checkButton()" required="required">
 		</div>
 		<div class="form-container">
+			<span class="alert" id="alert-password" hidden="true">Senha deve conter, pelo menos, um número, uma letra maiúscula, uma letra minúscula e 8 ou mais caracteres</span>
 			<label for="passwowd">Senha:</label>
-			<input type="password" name="password" id="password" value="" maxlength="45" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Deve conter, pelo menos, um número, uma letra maiúscula, uma letra minúscula e 8 ou mais caracteres" placeholder="Digite sua senha" required="required">
+			<input type="password" name="password" id="password" maxlength="45" placeholder="Digite sua senha" onInput="checkButton()" required="required">
 		</div>
 		<div class="form-container">
+			<span class="alert" id="alert-confirm-password" hidden="true">As senhas não correspondem</span>
 			<label for="confirm-passwowd">Confirme a sua senha:</label>
-			<input type="password" name="confirm-password" id="confirm-password" value="" placeholder="Repita a senha" required="required">
+			<input type="password" name="confirm-password" id="confirm-password" placeholder="Repita a senha" onInput="checkButton()" required="required">
 		</div>
-		<button class="button2" id="submit" onclick="send(submit)">Enviar</button>
+		<button type="submit" class="button2" id="submit" disabled>Enviar</button>
 	</form> 
 </body>
 </html>

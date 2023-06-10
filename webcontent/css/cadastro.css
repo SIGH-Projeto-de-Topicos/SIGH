@@ -85,3 +85,16 @@ body {
 			margin: 5px 0;
 			padding: 5px 0;
 		}
+		
+		#card button:disabled {
+			background: #8d8e91;
+			opacity: 0.6;
+		}
+		
+		#card span {
+			font-family: 'Open Sans', sans-serif;
+			font-size: 13px;
+			line-height: 1em;
+			
+			color: red;
+		}

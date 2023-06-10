@@ -8,7 +8,7 @@
 </head>
 <body>
 	<script type="text/javascript">
-		window.alert("")
+		window.alert("É aqui que vai o código que usa o dao para cadastrar um novo paciente!")
 	</script>
 </body>
 </html>
