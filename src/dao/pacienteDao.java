@@ -20,7 +20,6 @@ public class pacienteDao{
 			+ p.getN_tel() + "\',\'" 
 			+ p.getSenha() + "\');");
 			con.fecharConexao();
-			con.log("PacienteDao", "insert");
 			return true;
 		}catch(SQLException e) {
 			System.out.print("erro ao inserir dados na tabela");
