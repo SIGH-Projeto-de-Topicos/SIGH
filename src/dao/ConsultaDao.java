@@ -42,14 +42,14 @@ public class ConsultaDao {
 	}	
 	
 	public void delete(Consulta c) {
-		Conexao con = null;
-			try {
-				con = new Conexao();
-				con.executeUpdate("DELETE FROM paciente WHERE Id_paciente =" + c.getID_consulta());
-			}catch(SQLException e){
-				System.out.print("erro ao excluir consulta");
-			}
+		try {
+			Conexao con = null;
+			con = new Conexao();
+			con.executeUpdate("DELETE FROM paciente WHERE Id_paciente =" + c.getID_consulta() + ";");
+		}catch(SQLException e){
+			System.out.print("erro ao excluir consulta");
 		}
+	}
 	
 	public void update(Consulta c) {
 		try {

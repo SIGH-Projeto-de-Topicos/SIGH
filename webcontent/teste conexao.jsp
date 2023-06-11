@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" 
 pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@page import="util.Conexao"%>
+<%@page import="java.sql.*"%>
+<%@page import="model.*" %>
+<%@page import="java.time.LocalDate" %>
+<%@page import="java.time.format.DateTimeFormatter" %>
+<%@page import="dao.*" %>
+<!DOCTYPE htlm>	
 <html>
 <head>
 <meta charset="ISO-8859-1">
@@ -16,5 +22,5 @@ pageEncoding="UTF-8"%>
 			<label>Telefone:</label><input name="fone" type="text" placeholder="Telefone"><BR/>
 			<input type="submit" onClick="" value="cadastro">
 		</form>
-</body>
+	</body>
 </html>

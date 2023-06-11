@@ -97,7 +97,7 @@ public class Conexao {
     }
 
     /**
-     * * Retorna o maior n´umero de um campo da tabela se ele * for um inteiro.
+     * * Retorna o maior número de um campo da tabela se ele * for um inteiro.
      * Assim, n~ao teremos nenhum ID igual a outro.
      */
 	public int retornaIDMax(String tabela) {
