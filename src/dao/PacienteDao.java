@@ -6,9 +6,10 @@ import java.sql.SQLException;
 
 import model.Paciente;
 
-public class pacienteDao{
-	Conexao con = null;
-	public boolean insert(Paciente p){
+public class PacienteDao{
+	
+	private boolean insert(Paciente p){
+		Conexao con = null;
 		try {
 			con = new Conexao();
 			p.setID_paciente(con.retornaIDMax("pacientes"));
@@ -31,11 +32,10 @@ public class pacienteDao{
 		Conexao con = null;
 		try {
 			con = new Conexao();
-			ResultSet rSet = con.executeQuery("SELECT * FROM consultas WHERE email =" + email + "AND senha =" + senha + ";");
+			ResultSet rSet = con.executeQuery("SELECT * FROM consultas WHERE email =\'" + email + "\' AND senha =\'" + senha + "\';");
 			con.fecharConexao();
-			
-			if (rSet.next()) {
-				return new Paciente(
+			System.out.print("login realizado com sucesso");
+			return new Paciente(
 						rSet.getInt("id"),
 						rSet.getString("nome"),
 						rSet.getString("email"),
@@ -43,14 +43,18 @@ public class pacienteDao{
 						rSet.getString("telefone"),
 						rSet.getString("senha")
 					);
-			} else {
-				System.out.print("usuário e/ou senha está/estão incorretos");
-				return null;
-			}
 		}catch(SQLException e) {
 			System.out.print("erro ao ler os dados da tabela");
 			return null;
 		}
+	}
+	
+	public boolean cadastro(Paciente p) throws SQLException{
+		Conexao con = new Conexao();
+		insert(new Paciente(p.getNome(),p.getEmail(),p.getDatNasc(),p.getN_tel(),p.getSenha()));
+		con.fecharConexao();
+		return true;
+		
 	}
 	
 	public void update(Paciente p) {

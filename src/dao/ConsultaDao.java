@@ -26,7 +26,7 @@ public class ConsultaDao {
 		Conexao con = null;
 		try {
 			con = new Conexao();
-			ResultSet Rset = con.executeQuery("SELECT * FROM consulta WHERE Id_paciente =" + ID_paciente + ";");
+			ResultSet Rset = con.executeQuery("SELECT * FROM consultas WHERE id =" + ID_paciente + ";");
 			con.fecharConexao();
 			return Rset;
 		}catch(SQLException e) {
@@ -34,6 +34,13 @@ public class ConsultaDao {
 			return null;	
 		}
 	}
+	
+	public ResultSet query(int id) throws SQLException{
+		Conexao con = new Conexao();
+		ResultSet rs = con.executeQuery("SELECT id FROM consultas WHERE id=" + id + ";");
+		return rs;
+	}	
+	
 	public void delete(Consulta c) {
 		Conexao con = null;
 			try {

@@ -1,18 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" 
 pageEncoding="UTF-8"%>
-<%@page import="util.Conexao"%>
-<%@page import="java.sql.*"%>
-<%@page import="model.Paciente" %>
-<%@page import="dao.pacienteDao" %>
-
-<%!
-Paciente p = new Paciente(1, "Henrique Belém dos Santos", "email@gmail.com", new Date(10000), "40028922", "senha1234");
-%>
-<%
-pacienteDao pDao = new pacienteDao(); 
-pDao.update(p);
-response.sendRedirect("testeConexaoResponse.jsp");
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,6 +7,14 @@ response.sendRedirect("testeConexaoResponse.jsp");
 <title>Response Page</title>
 </head>
 <body>
-
+	<h1>registro</h1>
+		<form action="testeConexaoResponse.jsp" method="GET">
+			<label>Nome:</label><input name="nome" type="text" placeholder="nome" ><br/>
+			<label>Email:</label><input name="email" type="email" placeholder="example@domain.com" ><br>
+			<label>Senha:</label><input name="senha" type="text" placeholder="senha" ><br/>
+			<label>Data de nascimento:</label><input name="data" type="date"/><br/>
+			<label>Telefone:</label><input name="fone" type="text" placeholder="Telefone"><BR/>
+			<input type="submit" onClick="" value="cadastro">
+		</form>
 </body>
 </html>

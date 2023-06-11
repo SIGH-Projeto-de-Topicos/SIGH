@@ -13,7 +13,7 @@
 	<title>Cadastro</title>
 </head>
 <body>
-	<form id="card" method="POST" action="#">
+	<form id="card" method="POST" action="cadastroResponse.jsp">
 		<div class="title">
 			<h1>Cadastre-se</h1>
 			<p>Marque e gerencie todas as suas consultas em um só lugar.</p>
@@ -40,7 +40,7 @@
 		</div>
 		<div class="form-container">
 			<label for="confirm-passwowd">Confirme a sua senha:</label>
-			<input type="password" name="confirm-password" id="confirm-password" value="" placeholder="Repita a senha">
+			<input type="password" name="confirm-password" id="confirm-password" value="" placeholder="Repita a senha" onblur="isEqual()">
 		</div>
 		<button type="submit" class="button2">Enviar</button>	
 	</form>
