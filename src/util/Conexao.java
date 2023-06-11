@@ -9,8 +9,6 @@ import java.time.LocalTime;
 public class Conexao {
 
     public String status = "Não conectou...";
-    public static LocalDate date = LocalDate.now();
-    public static LocalTime time = LocalTime.now();
     
 //Método Construtor da Classe//
 //Método de Conexão//
@@ -81,10 +79,8 @@ public class Conexao {
         try {
             return statement.executeQuery(query);
         } catch (SQLException ex) {
-
             System.out.println("Nao foi possıvel executar a query" + ex);
-            return null;
-            // throw ex; 
+            return null; 
 
         }
     }
@@ -104,12 +100,12 @@ public class Conexao {
      * * Retorna o maior número de um campo da tabela se ele * for um inteiro.
      * Assim, n~ao teremos nenhum ID igual a outro.
      */
-    public int retornaIDMax(String tabela) {
+	public int retornaIDMax(String tabela) {
         try {
             String sql = "SELECT max(ID) as contador FROM " + tabela;
             ResultSet rs = this.executeQuery(sql);
             rs.next();
-            return rs.getInt("contador") + 1;
+            return rs.getInt("contador") + 1;   
         } catch (SQLException e) {
             System.out.println("Erro na selecao do ID Maximo" + e);
             e.printStackTrace();
@@ -117,7 +113,7 @@ public class Conexao {
             return 0;
         }
     }
-    public String status(String in_Class, String action){
-    	return this.status = in_Class + " in function:"+ action +"\n" + "date:" + Conexao.date + "\ntime:" + Conexao.time;
+    public String log(String in_Class, String action){
+    	return this.status = in_Class + " in function:"+ action +"\n" + "date:" + LocalDate.now() + "\ntime:" + LocalTime.now();
     }
 }

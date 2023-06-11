@@ -18,7 +18,8 @@ public class Paciente {
 		setDatNasc(datNasc);
 		setN_tel(n_tel);
 	}
-	public Paciente(String nome, String email, Date datNasc, String n_tel, String senha){
+	
+	public Paciente (String nome, String email, Date datNasc, String n_tel, String senha){
 		setNome(nome);
 		setEmail(email);
 		setSenha(senha);

@@ -90,7 +90,7 @@
             <h2>Agendamento de consultas simples e prático</h2>
             <p>Sabemos que é difícil agendar um atendimento pelo seu convênio. Encontre um especialista com poucos cliques</p>
         </div>
-        <div class="card">
+	        <div class="card">
             <div class="image-container"><img src="images/notification.png"></div>
             <h2>Agende no horário ideal pra você</h2>
             <p>Busque por diversos especialistas ao mesmo tempo e agende uma consulta no melhor horário para você.</p>

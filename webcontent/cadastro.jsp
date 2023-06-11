@@ -15,7 +15,7 @@
 	<title>Cadastre-se</title>
 </head>
 <body>
-	<form id="card" method="POST" action="pacientes/cadastro.jsp">
+	<form id="card" method="POST" action="cadastroResponse.jsp">
 		<div class="title">
 			<h1>Cadastre-se</h1>
 			<p>Marque e gerencie todas as suas consultas em um só lugar.</p>
