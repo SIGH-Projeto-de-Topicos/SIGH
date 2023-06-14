@@ -61,7 +61,6 @@
     <link rel="stylesheet" href="css/style.css">
     
     <script src="js/index.js" type="text/javascript"></script>
-    
     <link rel="icon" type="image/x-icon" href="images/favicon.png">
 
     <meta charset="UTF-8">

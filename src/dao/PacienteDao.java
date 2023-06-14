@@ -32,29 +32,36 @@ public class PacienteDao{
 		Conexao con = null;
 		try {
 			con = new Conexao();
-			ResultSet rSet = con.executeQuery("SELECT * FROM consultas WHERE email =\'" + email + "\' AND senha =\'" + senha + "\';");
+			ResultSet rs = con.executeQuery("SELECT * FROM pacientes WHERE email =\'" + email + "\' AND senha =\'" + senha + "\';");
 			con.fecharConexao();
 			System.out.print("login realizado com sucesso");
+			if(rs.next()) {
 			return new Paciente(
-						rSet.getInt("id"),
-						rSet.getString("nome"),
-						rSet.getString("email"),
-						rSet.getDate("nascimento"),
-						rSet.getString("telefone"),
-						rSet.getString("senha")
+						rs.getInt("id"),
+						rs.getString("nome"),
+						rs.getString("email"),
+						rs.getDate("nascimento"),
+						rs.getString("telefone"),
+						rs.getString("senha")
 					);
+			}else {
+				return null;
+			}
 		}catch(SQLException e) {
 			System.out.print("erro ao ler os dados da tabela");
 			return null;
 		}
 	}
 	
-	public boolean cadastro(Paciente p) throws SQLException{
-		Conexao con = new Conexao();
-		insert(new Paciente(p.getNome(),p.getEmail(),p.getDatNasc(),p.getN_tel(),p.getSenha()));
-		con.fecharConexao();
-		return true;
-		
+	public boolean cadastro(Paciente p){
+		if(p != null) {
+			Conexao con = new Conexao();
+			insert(new Paciente(p.getNome(),p.getEmail(),p.getDatNasc(),p.getN_tel(),p.getSenha()));
+			con.fecharConexao();
+			return true;
+		}else {
+			return false;
+		}
 	}
 	
 	public void update(Paciente p) {

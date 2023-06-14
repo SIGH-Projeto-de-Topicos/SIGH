@@ -4,8 +4,11 @@
  <%@ page import="model.Paciente" %>
  <%
  	PacienteDao pDao = new PacienteDao();
- 	pDao.login(request.getParameter("emailf"), request.getParameter("passwordf"));
- 	response.sendRedirect("index.jsp");
+ 	if(pDao.login(request.getParameter("email"), request.getParameter("password")) != null){ 		
+	 	response.sendRedirect("index.jsp");
+ 	}else{
+ 		response.sendRedirect("home.jsp");	
+ 	}
  %>
 <!DOCTYPE html>
 <html>
