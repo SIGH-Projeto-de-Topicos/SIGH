@@ -15,7 +15,7 @@
 	<title>Cadastre-se</title>
 </head>
 <body>
-	<form id="card" method="POST" action="cadastroResponse.jsp">
+	<form id="card" method="POST" action="index.jsp">
 		<div class="title">
 			<h1>Cadastre-se</h1>
 			<p>Marque e gerencie todas as suas consultas em um só lugar.</p>
@@ -51,6 +51,7 @@
 			<input type="password" name="confirm-password" id="confirm-password" placeholder="Repita a senha" onInput="checkButton()" required="required">
 		</div>
 		<button type="submit" class="button2" id="submit" disabled>Enviar</button>
+		<input name="state" style="visibility:hidden" value="true">
 	</form> 
 </body>
 </html>
