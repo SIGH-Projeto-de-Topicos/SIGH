@@ -53,15 +53,8 @@ public class PacienteDao{
 		}
 	}
 	
-	public boolean cadastro(Paciente p){
-		if(p != null) {
-			Conexao con = new Conexao();
+	public void cadastro(Paciente p){
 			insert(new Paciente(p.getNome(),p.getEmail(),p.getDatNasc(),p.getN_tel(),p.getSenha()));
-			con.fecharConexao();
-			return true;
-		}else {
-			return false;
-		}
 	}
 	
 	public void update(Paciente p) {
