@@ -22,7 +22,7 @@ public class ConsultaDao {
 		}
 	}
 	
-	public ResultSet Query(String ID_paciente){
+	public ResultSet Query(int ID_paciente){
 		Conexao con = null;
 		try {
 			con = new Conexao();

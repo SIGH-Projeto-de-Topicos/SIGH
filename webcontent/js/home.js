@@ -6,4 +6,3 @@ function openNav() {
 function closeNav() {
 	document.getElementById('sidenav').style.display = 'none';
 	document.getElementById('sidenav-background').style.display = 'none';
-}

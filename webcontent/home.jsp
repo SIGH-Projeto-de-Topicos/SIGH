@@ -1,5 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="dao.PacienteDao" %>
+<%@ page import="dao.ConsultaDao" %>
+<%@ page import="model.Paciente" %>
+<%@ page import="java.sql.ResultSet" %>
+<%@ page import="java.util.ArrayList" %>
+<%
+	PacienteDao pDao = new PacienteDao();
+	Paciente p = pDao.login(request.getParameter("email"), request.getParameter("password"));
+	if(p == null){
+		response.sendRedirect("index.jsp");
+	}
+%>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -17,7 +29,7 @@
 	<header>	
         <img src="images/logo.png">
         <div id="user">
-            <span id="name">Murilo Henrique Conde Da Luz</span>
+            <span id="name"><%=p.getNome()%></span>
 			<svg onClick="openNav()" id="user-img" width="100" height="100">
 				<circle cx="50" cy="50" r="48" fill="#238BAD" />
 				<text fill="#ffffff" font-size="45" font-family="Open Sans" x="13.25" y="65">MH</text>
@@ -27,10 +39,10 @@
     <div id="sidenav-background" onClick="closeNav()"></div>
     <nav id="sidenav">
     	<div id="sidenav-title">
-    		<span id="sidebar-name">Murilo Henrique</span>
+    		<span id="sidebar-name"><%=p.getNome() %></span>
     		<svg id="user-img" width="100" height="100">
 				<circle cx="50" cy="50" r="48" fill="#238BAD" />
-				<text fill="#ffffff" font-size="45" font-family="Open Sans" x="13.25" y="65">MH</text>
+				<text fill="#ffffff" font-size="45" font-family="Open Sans" x="13.25" y="65"><%=p.getNome().charAt(0) %></text>
 			</svg>
     	</div>
     	<div id="sidenav-links"> 
@@ -46,49 +58,21 @@
 	    	<button class="button2">Solicitar Consulta</button>
     	</div>
     	<div id="table">
-    		<div class="th">
-    			<div class="ti">Clínica</div>
-    			<div class="ti">Horário</div>
-    			<div class="ti">Data</div>
-    			<div class="ti">Especialidade</div>
-    			<div class="ti">Tipo</div>
-    		</div>
-    		<div class="tr">
-    			<div class="ti">Clínica</div>
-    			<div class="ti">Horário</div>
-    			<div class="ti">Data</div>
-    			<div class="ti">Especialidade</div>
-    			<div class="ti">Tipo</div>
-    		</div>
-    		<div class="tr">
-    			<div class="ti">Clínica</div>
-    			<div class="ti">Horário</div>
-    			<div class="ti">Data</div>
-    			<div class="ti">Especialidade</div>
-    			<div class="ti">Tipo</div>
-    		</div>
-    		<div class="tr">
-    			<div class="ti">Clínica</div>
-    			<div class="ti">Horário</div>
-    			<div class="ti">Data</div>
-    			<div class="ti">Especialidade</div>
-    			<div class="ti">Tipo</div>
-    		</div>
-    		<div class="tr">
-    			<div class="ti">Clínica</div>
-    			<div class="ti">Horário</div>
-    			<div class="ti">Data</div>
-    			<div class="ti">Especialidade</div>
-    			<div class="ti">Tipo</div>
-    		</div>
-    		<div class="tr">
-    			<div class="ti">Clínica</div>
-    			<div class="ti">Horário</div>
-    			<div class="ti">Data</div>
-    			<div class="ti">Especialidade</div>
-    			<div class="ti">Tipo</div>
-    		</div>
-    		
+    	<%
+			ConsultaDao cDao = new ConsultaDao();
+			ResultSet rs = cDao.Query(p.getID_paciente());
+			while(rs.next()){
+		%>		
+		    <div class="th">
+		    	<div class="ti"><%=rs.getString("clinica") %></div>
+		    	<div class="ti"><%=rs.getTime("hora") %></div>
+		   		<div class="ti"><%=rs.getDate("data") %></div>
+		    	<div class="ti"><%=rs.getString("especialidade") %></div>
+		   		<div class="ti"><%=rs.getString("modalidade") %></div>
+		    </div>
+		<%
+			}
+		%>
     	</div>
     </article>
     <footer>
