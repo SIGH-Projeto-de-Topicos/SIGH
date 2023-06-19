@@ -25,17 +25,17 @@
     </header>
     <div id="section">
 		<h1 id="title">Solicitar Consulta</h1>
-		<form action="" method="post">
-			<select name="clinica">
+		<form action="consultas/solicitarConsulta.jsp" target="_self" method="post">
+			<select name="clinica" required>
 				<option value="" disabled selected>Clínica</options>
 				<option value="wa">waaa</option>	
 			</select>
 		
-			<input type="date" name="date">
+			<input type="date" name="date" required>
 			
-			<input type="time" name="time">
+			<input type="time" name="time" required>
 			
-			<select name="especialidades">
+			<select name="especialidade" required>
 				<option value="" disabled selected>Especialidade</options>
 				<option value="Pindamonhangaba">Pindamonhagaba</option>	
 			</select>
@@ -43,7 +43,7 @@
 			<div id="btn-container">
 				<label for="presencial" class="btn-selected" id="presencial-label">
 					Presencial
-					<input type="radio" id="presencial" name="modalidade" value="presencial" oninput="updateCheckbox()" selected hidden>
+					<input type="radio" id="presencial" name="modalidade" value="presencial" oninput="updateCheckbox()" checked hidden>
 				</label>
 				
 				<label for="online" class="btn-unselected" id="online-label">

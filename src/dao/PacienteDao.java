@@ -28,25 +28,51 @@ public class PacienteDao{
 		}
 	}
 	
+	public Paciente getPaciente(int id) {
+		Conexao con = null;
+		try {
+			con = new Conexao();
+			ResultSet rs = con.executeQuery("SELECT * FROM pacientes WHERE id=" + id + ";");
+			if(rs.next()) {
+				return new Paciente(
+							rs.getInt("id"),
+							rs.getString("nome"),
+							rs.getString("email"),
+							rs.getDate("nascimento"),
+							rs.getString("telefone"),
+							rs.getString("senha")
+						);
+			}else {
+				con.fecharConexao();
+				return null;
+			}
+
+		}catch(SQLException e) {
+			System.out.print("erro ao ler os dados da tabela");
+			return null;
+		}
+	}
+	
 	public Paciente login(String email, String senha) {
 		Conexao con = null;
 		try {
 			con = new Conexao();
 			ResultSet rs = con.executeQuery("SELECT * FROM pacientes WHERE email =\'" + email + "\' AND senha =\'" + senha + "\';");
-			con.fecharConexao();
 			System.out.print("login realizado com sucesso");
 			if(rs.next()) {
-			return new Paciente(
-						rs.getInt("id"),
-						rs.getString("nome"),
-						rs.getString("email"),
-						rs.getDate("nascimento"),
-						rs.getString("telefone"),
-						rs.getString("senha")
-					);
+				return new Paciente(
+							rs.getInt("id"),
+							rs.getString("nome"),
+							rs.getString("email"),
+							rs.getDate("nascimento"),
+							rs.getString("telefone"),
+							rs.getString("senha")
+						);
 			}else {
+				con.fecharConexao();
 				return null;
 			}
+
 		}catch(SQLException e) {
 			System.out.print("erro ao ler os dados da tabela");
 			return null;

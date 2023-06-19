@@ -1,18 +1,18 @@
 package model;
 
 import java.sql.Date;
-import java.sql.Time;
+import java.time.LocalTime;
 
 public class Consulta{	
 	private int ID_consulta;
 	private String clinica;
 	private Date data;
-	private Time hora;
+	private LocalTime hora;
 	private String especialidade;
 	private String modalidade;
 	private int ID_paciente;	
 	
-	public Consulta(int ID_consulta, String clinica, Date data, Time hora, String especialidade,String modalidade, int ID_paciente){
+	public Consulta(int ID_consulta, String clinica, Date data, LocalTime hora, String especialidade,String modalidade, int ID_paciente){
 		setID_consulta(ID_consulta);
 		setClinica(clinica);
 		setData(data);
@@ -21,6 +21,16 @@ public class Consulta{
 		setEspecialidade(especialidade);
 		setID_paciente(ID_paciente);
 	}
+	
+	public Consulta(String clinica, Date data, LocalTime hora, String especialidade,String modalidade, int ID_paciente){
+		setClinica(clinica);
+		setData(data);
+		setHora(hora);
+		setModalidade(modalidade);
+		setEspecialidade(especialidade);
+		setID_paciente(ID_paciente);
+	}
+	
 	
 	public int getID_consulta() {
 		return ID_consulta;
@@ -43,10 +53,10 @@ public class Consulta{
 		this.data = data;
 	}
 	
-	public Time getHora() {
+	public LocalTime getHora() {
 		return hora;
 	}
-	public void setHora(Time hora) {
+	public void setHora(LocalTime hora) {
 		this.hora = hora;
 	}
 	

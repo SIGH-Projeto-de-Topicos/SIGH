@@ -12,8 +12,8 @@ public class ConsultaDao {
 		try {
 			Conexao con = null;
 			con = new Conexao();
-			c.setID_consulta(con.retornaIDMax("consulta"));
-			con.executeUpdate("INSERT INTO consultas(id,clinica,data,hora,especialidade,modalidade,paciente_id) VALUES("+c.getID_consulta()+",\'"+c.getClinica()+"\',"+ c.getData()+ "," +c.getHora()+ ",\'" +c.getEspecialidade()+ "\',\'" +c.getModalidade()+"\',"+ c.getID_paciente()+")");
+			c.setID_consulta(con.retornaIDMax("consultas"));
+			con.executeUpdate("INSERT INTO consultas(id,clinica,data,hora,especialidade,modalidade,paciente_id) VALUES("+c.getID_consulta()+",\'"+c.getClinica()+"\',\'"+ c.getData()+ "\',\'" +c.getHora()+ "\',\'" +c.getEspecialidade()+ "\',\'" +c.getModalidade()+"\',"+ c.getID_paciente()+");");
 			con.fecharConexao();
 			return true;
 		}catch(SQLException e) {
@@ -26,8 +26,7 @@ public class ConsultaDao {
 		Conexao con = null;
 		try {
 			con = new Conexao();
-			ResultSet Rset = con.executeQuery("SELECT * FROM consultas WHERE id =" + ID_paciente + ";");
-			con.fecharConexao();
+			ResultSet Rset = con.executeQuery("SELECT * FROM consultas WHERE paciente_id =" + ID_paciente + ";");
 			return Rset;
 		}catch(SQLException e) {
 			System.out.print("resultados nao encontrados");
