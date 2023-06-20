@@ -135,26 +135,81 @@ footer {
 	gap: 2px;
 }
 
-	#table .th, #table .tr {
+	#table .th {
 		display: flex;
 		
 		flex-direction: row;
 		
 		justify-content: space-between;
 		
-		color: #fff;
-	}
-	
-	#table .th {
 		border-radius: 20px;
-		background-color: #085683;
+		
+		color: #fff;
+		background-color: #085683;		
 	}
 	
-	#table .tr {
+	 #table .tr {
+		display: flex;
+		
+		flex-direction: row;
+		
 		border-radius: 25px;
+		
+		color: #fff;
 		background-color: #238BAD;
 	}
+	
+		#table .ti-group {
+			display: flex;
+			
+			flex-direction: row;
 
+			justify-content: space-between;	
+		}
+		
+		#table .btn-group {
+			align-self: flex-end;
+			
+			margin: 0 20px 15px 0;
+			
+			justify-content: space-between;
+		}
+			
+			#table form {
+				display: inline;
+			}
+			
+			.btn-group .btn-cancel {
+				padding: 5px 10px;
+				margin-right: 10px;
+			
+				font-family: 'Open Sans', sans-serif;
+				font-size: 14px;
+			
+				border: none;
+				border-radius: 5px;
+	
+				color: #fff;
+				background-color: #c52a2a;
+				
+				z-index: 1;
+			}
+			
+			.btn-group .btn-edit {
+				padding: 5px 10px;
+			
+				font-family: 'Open Sans', sans-serif;
+				font-size: 14px;
+			
+				border: none;
+				border-radius: 5px;
+	
+				color: #fff;
+				background: linear-gradient(180deg, #EAA61E 0%, rgba(234, 166, 30, 0) 100%), #E6890E;
+				
+				z-index: 1;
+			}
+	
 	#table .th .ti {
 		padding: 20px 0;
 	

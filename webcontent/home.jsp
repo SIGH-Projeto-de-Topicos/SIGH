@@ -70,9 +70,9 @@
 		%>		
 		    <div class="tr" id="<%=rs.getInt("id")%>" onclick="expand(<%=rs.getInt("id")%>)">
 		    	<div class="ti-group">
-			    	<div class="ti" ><%=rs.getString("clinica") %></div>
+			    	<div class="ti"><%=rs.getString("clinica") %></div>
 			    	<div class="ti"><%=rs.getTime("hora") %></div>
-			   		<div class="ti"><%=rs.getDate("data") %></div>
+			   		<div class="ti"><%=rs.getDate("data")%> </div>
 			    	<div class="ti"><%=rs.getString("especialidade") %></div>
 			   		<div class="ti"><%=rs.getString("modalidade") %></div>
 		    	</div>
