@@ -1,0 +1,47 @@
+html{
+	font-family: helvetica;
+}
+
+.nav_medic_op_uc{
+	display: flex;
+	flex-direction:column;
+	gap: 10px 0px;
+	padding-left:50px;
+}
+
+.nav_medic_op_uc span{
+	display:flex;
+	flex-direction:row;
+	align-items:center;
+	gap: 0px 10px;
+	margin:5px;
+}
+
+.nav_medic_op_uc p, .patient-card p{
+	text-transform:capitalize;
+	font-family: helvetica;
+	font-weight: 600;
+	font-size: 20px;	
+}
+
+.patient-card{
+	display:flex;
+	flex-direction:column;
+	justify-content:center;
+	align-items:center;
+}
+.patiente-card span{
+	display:flex;
+	flex-direction:row;
+	justify-content:center;
+}
+
+.th-1{
+	display:flex;
+	flex-direction:row;
+	background-color:#F4A629;
+}
+.th-1 H2{
+	color:#ffffff;
+	
+}
