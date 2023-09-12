@@ -49,7 +49,8 @@
     <article>
     
     <div class="patient-card">
-    	<div id="table-1">
+    
+    	<span>
 		    <span>
 		    	<svg id="" width="200" height="200">
 		    		<circle cx="100" cy="100" r="75" fill="#238BAD">
@@ -58,10 +59,14 @@
 		    </span>
 		    
 		    <span class="th-1">		
-			    <h2>Data</h2>
+			    <h2>Dados</h2>
 		    </span>
 		    
-    	</div>
+		    <span class="tr-1">
+		    	<span class="ti-1">a</span>
+		    </span>
+		    
+    	</span>
     </div>	
     </article>
     <footer>
