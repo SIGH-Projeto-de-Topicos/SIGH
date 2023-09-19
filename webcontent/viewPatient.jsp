@@ -36,7 +36,7 @@
     		<span id="sidebar-name">nome</span>
     		<svg id="user-img" width="100" height="100">
 				<circle cx="50" cy="50" r="40" fill="#238BAD" />
-				<text fill="#ffffff" font-size="40" font-family="Open Sans" x="50%" y="52%" dominant-baseline="middle" text-anchor="middle">N</text>
+				<text >N</text>
 			</svg>
     	</div>
     	<div id="sidenav-links"> 
@@ -48,20 +48,34 @@
     </nav>
     <article>
     
-    <div class="patient-card">
-    	<div id="table-1">
-		    <span>
-		    	<svg id="" width="200" height="200">
-		    		<circle cx="100" cy="100" r="75" fill="#238BAD">
-		    	</svg>
-		    	<p>Nome_paciente</p>
-		    </span>
-		    
-		    <span class="th-1">		
-			    <h2>Data</h2>
-		    </span>
-		    
+    
+    <div class="tb-1">
+    	<svg class="user.photo" width="200" height="200">
+    		<circle cx="100" cy="100" r="80" fill="#234567"/>
+    	</svg>
+    	<span>nome</span>
+    	<div class="th-1">Dados da consulta</div>
+    	
+    	<div class="tr-1">
+    		<div class="ti-1">Horário</div>
+			<div class="ti-1">Horario_consulta</div>
     	</div>
+    	
+    	<div class="tr-1">
+    		<div class="ti-1">Data</div>
+			<div class="ti-1">Data_consulta</div>
+    	</div>
+    	
+    	<div class="tr-1">
+    		<div class="ti-1">Especialidade</div>
+			<div class="ti-1">Data_especialidade</div>
+    	</div> 
+    	
+    	<div class="tr-1">
+    		<div class="ti-1">Modalidade</div>
+			<div class="ti-1">Data_modalidade</div>
+    	</div>
+    	   	    	
     </div>	
     </article>
     <footer>

@@ -47,7 +47,7 @@
     	</div>
     </nav>
     <article>
-    <span class="nav_medic_op_uc">
+    <div class="navmed">
     
     	<span>
     		<img alt="clinic_name" src="images/hospital.svg">
@@ -55,21 +55,17 @@
     	</span>
     	
     	<span>
-    		<img alt="refresh" src="images/refresh.svg">
-    		<p>atualizar</p>
+    		<img alt="refresh" src="images/refresh.svg" onclick="console.log('click')">
+    		<p onclick="console.log('click')">atualizar</p>
     	</span>
     	
-    </span>
+    </div>
     	<div id="title">
 	    	<h1>Consultas</h1>
     	</div>
     	<div id="table">
     		<div class="th">
     			<div class="ti">Paciente</div>
-    			<div class="ti">Clínica</div>
-    			<div class="ti">Horário</div>
-    			<div class="ti">Data</div>
-    			<div class="ti">Especialidade</div>
     			<div class="ti">Modalidade</div>
     		</div>
 

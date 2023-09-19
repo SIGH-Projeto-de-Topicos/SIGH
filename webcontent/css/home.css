@@ -230,4 +230,12 @@ footer {
 		
 		text-align: center;
 	}
-#table #table-1{}
+	
+	.tb-1 #table{
+		
+	}
+	
+	.th-1 .th{
+		background-color:#F4A629;
+		
+	}

@@ -1,47 +1,60 @@
 html{
 	font-family: helvetica;
 }
-
-.nav_medic_op_uc{
-	display: flex;
-	flex-direction:column;
-	gap: 10px 0px;
-	padding-left:50px;
+/*homeMedic.jps*/
+.navmed{
+	margin:20px;
 }
-
-.nav_medic_op_uc span{
+.navmed span{
 	display:flex;
 	flex-direction:row;
+	justify-content:flex-start;
 	align-items:center;
-	gap: 0px 10px;
-	margin:5px;
+	margin: 1.9%;
 }
-
-.nav_medic_op_uc p, .patient-card p{
+.navmed span p{
 	text-transform:capitalize;
-	font-family: helvetica;
-	font-weight: 600;
-	font-size: 20px;	
+	font-weight:600;
+	font-size:22px;
+	margin:8px;
+	color:#000000EF;
+}
+.navmed span img{
+	height:55px;
+	width:55px;
 }
 
-.patient-card{
+
+/*viewConsulta.jsp*/
+.tb-1{
 	display:flex;
-	flex-direction:column;
-	justify-content:center;
+	flex-direction: column;
 	align-items:center;
-}
-.patiente-card span{
-	display:flex;
-	flex-direction:row;
-	justify-content:center;
+	gap: 25% 0%;
+	
+	text-transform:captalize;
 }
 
-.th-1{
+.th-1, .tr-1{
 	display:flex;
 	flex-direction:row;
-	background-color:#F4A629;
-}
-.th-1 H2{
-	color:#ffffff;
+	justify-content: space-between;
+	align-items: center;
+	align-self: stretch; 
 	
+	border-radius:15px;
+	padding: 20px 90px;
+	margin: 3px 30px;
+	
+	font-size: 1.6em;
+	font-weight:600;
+}
+.th-1{
+	color:white;
+	background-color:#F4A629;
+	justify-content: center;
+}
+.tr-1{
+	color:white;
+	background-color:#37B2DB;
 }
