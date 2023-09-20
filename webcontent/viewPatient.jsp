@@ -51,9 +51,10 @@
     
     <div class="tb-1">
     	<svg class="user.photo" width="200" height="200">
-    		<circle cx="100" cy="100" r="80" fill="#234567"/>
+    		<circle cx="50%" cy="50%" r="40%" fill="#238BAD"/>
+    		<text fill="#ffffff" font-size="30%" font-family="Open Sans" x="50%" y="50%"></text>
     	</svg>
-    	<span>nome</span>
+    	<span class="u-name">nome</span>
     	<div class="th-1">Dados da consulta</div>
     	
     	<div class="tr-1">

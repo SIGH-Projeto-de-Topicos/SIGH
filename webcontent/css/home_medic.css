@@ -10,12 +10,12 @@ html{
 	flex-direction:row;
 	justify-content:flex-start;
 	align-items:center;
-	margin: 1.9%;
+	margin: 1.5%;
 }
 .navmed span p{
 	text-transform:capitalize;
 	font-weight:600;
-	font-size:22px;
+	font-size:20px;
 	margin:8px;
 	color:#000000EF;
 }
@@ -23,16 +23,20 @@ html{
 	height:55px;
 	width:55px;
 }
-
+.u-name{
+	font-size: 20px;
+	font-weight: 600;
+	padding-top: 10px;
+  	padding-bottom: 10px;	
+}
 
 /*viewConsulta.jsp*/
 .tb-1{
 	display:flex;
 	flex-direction: column;
 	align-items:center;
-	gap: 25% 0%;
-	
-	text-transform:captalize;
+	gap: 5% 0%;
+	margin:60px;
 }
 
 .th-1, .tr-1{
@@ -43,18 +47,18 @@ html{
 	align-self: stretch; 
 	
 	border-radius:15px;
-	padding: 20px 90px;
-	margin: 3px 30px;
+	padding: 1.8px 30px;
+	margin: 3px 350px;
 	
-	font-size: 1.6em;
+	font-size: 0.75cm;
 	font-weight:600;
 }
 .th-1{
 	color:white;
-	background-color:#F4A629;
+	background-color:#085683;
 	justify-content: center;
 }
 .tr-1{
 	color:white;
-	background-color:#37B2DB;
+	background-color:#238BAD;
 }
