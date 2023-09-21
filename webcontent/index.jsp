@@ -44,6 +44,7 @@
 		"Saúde Caixa",
 		"Omint",
 		"Sulamerica"};
+	
 		public String generateLinks(String[] list) {
 			String ul = "<ul class='link-container'>";
 			
@@ -55,20 +56,6 @@
 			
 			return ul;
 		}
-%>
-<%
-	boolean state = false;
-
-	if(state=Boolean.parseBoolean(request.getParameter("state"))){
-		PacienteDao pDao = new PacienteDao();
-		pDao.cadastro(new Paciente(
-						request.getParameter("name"),
-						request.getParameter("email"),
-						DataConversor.ToSQLDate(request.getParameter("born")),
-						request.getParameter("phone"),
-						request.getParameter("password")));
-	}
-	
 %>
 <!DOCTYPE html>
 <html lang="pt-br">

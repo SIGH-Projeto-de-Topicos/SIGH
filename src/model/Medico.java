@@ -6,15 +6,17 @@ public class Medico {
 	private String email;
 	private String especialidade;
 	private String uf;
+	private String crm;
 	private String hospital;
 	private String senha;
 	
-	public Medico(int id, String nome, String email, String especialidade, String uf, String hospital, String senha) {
+	public Medico(int id, String nome, String email, String especialidade, String uf, String crm, String hospital, String senha) {
 		setId(id);
 		setNome(nome);
 		setEmail(email);
 		setEspecialidade(especialidade);
 		setUf(uf);
+		setCrm(crm);
 		setHospital(hospital);
 		setSenha(senha);
 	}
@@ -38,6 +40,10 @@ public class Medico {
 	
 	public String getUf() {
 		return uf;
+	}
+	
+	public String getCrm() {
+		return crm;
 	}
 	
 	public String getHospital() {
@@ -67,6 +73,10 @@ public class Medico {
 	
 	public void setUf(String uf) {
 		this.uf = uf;
+	}
+	
+	public void setCrm(String crm) {
+		this.crm = crm;
 	}
 	
 	public void setHospital(String hospital) {

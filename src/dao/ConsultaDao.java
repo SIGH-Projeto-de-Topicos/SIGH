@@ -5,58 +5,106 @@ import model.Consulta;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class ConsultaDao {
-	Consulta c = null;
-	
-	public boolean insert(Consulta c){
+import java.sql.Date;
+import java.time.LocalTime;
+
+public class ConsultaDao {	
+	private final String tabela = "consulta";
+		
+	public Consulta insert(String clinica, Date data, LocalTime hora, String modalidade, int idPaciente, int idMedico){
+		Conexao conn = null;
+		
 		try {
-			Conexao con = null;
-			con = new Conexao();
-			c.setID_consulta(con.retornaIDMax("consultas"));
-			con.executeUpdate("INSERT INTO consultas(id,clinica,data,hora,especialidade,modalidade,paciente_id) VALUES("+c.getID_consulta()+",\'"+c.getClinica()+"\',\'"+ c.getData()+ "\',\'" +c.getHora()+ "\',\'" +c.getEspecialidade()+ "\',\'" +c.getModalidade()+"\',"+ c.getID_paciente()+");");
-			con.fecharConexao();
-			return true;
+			conn = new Conexao();
+			
+			int id = conn.retornaIDMax("consultas");
+			
+			Consulta consulta = new Consulta(
+					id,
+					clinica,
+					data,
+					hora,
+					modalidade,
+					idPaciente,
+					idMedico
+			);
+			
+			String query = String.format(
+					"INSERT INTO %s (id, clinica, data, hora, modalidade, idpaciente, idmedico) VALUES (%d, '%s', '%s', '%s', '%s', %d, %d)",
+						tabela,
+						id,
+						data,
+						hora,
+						modalidade,
+						idPaciente,
+						idMedico
+			);
+			
+			conn.executeUpdate(query);
+			conn.fecharConexao();
+			
+			return consulta;
+			
 		}catch(SQLException e) {
 			System.out.print("error:" + e);
-			return false;
+			return null;
 		}
 	}
 	
-	public ResultSet Query(int ID_paciente){
-		Conexao con = null;
+	public Consulta get(int id){
+		Conexao conn = null;
+		
 		try {
-			con = new Conexao();
-			ResultSet Rset = con.executeQuery("SELECT * FROM consultas WHERE paciente_id =" + ID_paciente + ";");
-			return Rset;
+			conn = new Conexao();
+			
+			String query = String.format(
+					"SELECT * FROM %s WHERE id=%d;",
+						tabela,
+						id
+			);
+			
+			Consulta consulta = null;
+			
+			ResultSet rs = conn.executeQuery(query);
+			
+			if (rs.next()) {
+				consulta = new Consulta(
+						rs.getInt("id"),
+						rs.getString("clinica"),
+						rs.getDate("data"),
+						rs.getTime("hora").toLocalTime(),
+						rs.getString("modalidade"),
+						rs.getInt("idpaciente"),
+						rs.getInt("idmedico")
+				);
+			}
+			
+			conn.fecharConexao();
+			
+			return consulta;
+			
 		}catch(SQLException e) {
 			System.out.print("resultados nao encontrados");
 			return null;	
 		}
 	}
 	
-	public ResultSet query(int id) throws SQLException{
-		Conexao con = new Conexao();
-		ResultSet rs = con.executeQuery("SELECT id FROM consultas WHERE id=" + id + ";");
-		return rs;
-	}	
-	
-	public void delete(Consulta c) {
+	public void delete(int id) {
 		try {
-			Conexao con = null;
-			con = new Conexao();
-			con.executeUpdate("DELETE FROM paciente WHERE Id_paciente =" + c.getID_consulta() + ";");
+			Conexao conn = null;
+			
+			conn = new Conexao();
+			
+			String update = String.format(
+					"DELETE FROM %s WHERE id=%d;",
+						tabela,
+						id
+			);
+			
+			conn.executeUpdate(update);
+			
 		}catch(SQLException e){
 			System.out.print("erro ao excluir consulta");
-		}
-	}
-	
-	public void update(Consulta c) {
-		try {
-			Conexao con = null;
-			con = new Conexao();
-			con.executeUpdate("UPDATE paciente SET clinica =\'"+ c.getClinica() +"\' data"+ "=" + c.getData() + "WHERE Id_consulta=" + c.getID_consulta());
-		}catch(SQLException e) {
-			
 		}
 	}
 }
