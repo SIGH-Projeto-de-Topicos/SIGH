@@ -3,49 +3,83 @@ package dao;
 import util.Conexao;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Date;
 
 import model.Paciente;
 
 public class PacienteDao{
+	private final String tabela = "paciente";
 	
-	private boolean insert(Paciente p){
-		Conexao con = null;
+	public Paciente insert(String nome, String email, Date nascimento, String telefone, String senha){
+		Conexao conn = null;
+		
 		try {
-			con = new Conexao();
-			p.setID_paciente(con.retornaIDMax("pacientes"));
-			con.executeUpdate("INSERT INTO pacientes(id,nome,email,nascimento,telefone,senha) VALUES ("+ 
-			p.getID_paciente() 
-			+",\'"+ p.getNome() + "\',\'" 
-			+ p.getEmail() + "\',\'"
-			+ p.getDatNasc() + "\',\'"
-			+ p.getN_tel() + "\',\'" 
-			+ p.getSenha() + "\');");
-			con.fecharConexao();
-			return true;
+			conn = new Conexao();
+			
+			int id = conn.retornaIDMax(tabela);
+			
+			Paciente paciente = new Paciente(
+					id,
+					nome,
+					email,
+					nascimento,
+					telefone,
+					senha
+			);
+					
+			
+			String query = String.format(
+					"INSERT INTO %s (id, nome, email, nascimento, telefone, senha) VALUES (%d, '%s', '%s', %d, '%s', '%s');",
+						tabela,
+						paciente.getId(),
+						paciente.getNome(),
+						paciente.getEmail(),
+						paciente.getNascimento(),
+						paciente.getTelefone(),
+						paciente.getSenha()
+			);
+			
+			conn.executeUpdate(query);
+			conn.fecharConexao();
+			
+			return paciente;
+			
 		}catch(SQLException e) {
 			System.out.print("erro ao inserir dados na tabela");
-			return false;
+			return null;
 		}
 	}
 	
-	public Paciente getPaciente(int id) {
-		Conexao con = null;
+	public Paciente get(int id) {
+		Conexao conn = null;
+		
 		try {
-			con = new Conexao();
-			ResultSet rs = con.executeQuery("SELECT * FROM pacientes WHERE id=" + id + ";");
+			conn = new Conexao();
+			
+			String query = String.format(
+					"SELECT * FROM %s WHERE id=%d;",
+						tabela,
+						id
+			);
+			
+			Paciente paciente = null;
+			
+			ResultSet rs = conn.executeQuery(query);
+			
 			if(rs.next()) {
-				return new Paciente(
-							rs.getInt("id"),
-							rs.getString("nome"),
-							rs.getString("email"),
-							rs.getDate("nascimento"),
-							rs.getString("telefone"),
-							rs.getString("senha")
-						);
-			}else {
-				con.fecharConexao();
-				return null;
+				paciente = new Paciente(
+						rs.getInt("id"),
+						rs.getString("nome"),
+						rs.getString("email"),
+						rs.getDate("nascimento"),
+						rs.getString("telefone"),
+						rs.getString("senha")
+				);
 			}
+			
+			conn.fecharConexao();
+			
+			return paciente;
 
 		}catch(SQLException e) {
 			System.out.print("erro ao ler os dados da tabela");
@@ -53,54 +87,87 @@ public class PacienteDao{
 		}
 	}
 	
-	public Paciente login(String email, String senha) {
-		Conexao con = null;
+	public void update(int id, String email, String telefone) {
+		Conexao conn = null;
+		
 		try {
-			con = new Conexao();
-			ResultSet rs = con.executeQuery("SELECT * FROM pacientes WHERE email =\'" + email + "\' AND senha =\'" + senha + "\';");
-			System.out.print("login realizado com sucesso");
-			if(rs.next()) {
-				return new Paciente(
-							rs.getInt("id"),
-							rs.getString("nome"),
-							rs.getString("email"),
-							rs.getDate("nascimento"),
-							rs.getString("telefone"),
-							rs.getString("senha")
-						);
-			}else {
-				con.fecharConexao();
-				return null;
-			}
-
-		}catch(SQLException e) {
-			System.out.print("erro ao ler os dados da tabela");
-			return null;
-		}
-	}
-	
-	public void cadastro(Paciente p){
-			insert(new Paciente(p.getNome(),p.getEmail(),p.getDatNasc(),p.getN_tel(),p.getSenha()));
-	}
-	
-	public void update(Paciente p) {
-		Conexao con = null;
-		try {
-			con = new Conexao();
-			con.executeUpdate("UPDATE pacientes SET email =\'" + p.getEmail() + "\'," + "telefone =\'" + p.getN_tel() + "\'\n" + "WHERE id"+ "=" + p.getID_paciente());
-			con.fecharConexao();
+			conn = new Conexao();
+			
+			String update = String.format(
+					"UPDATE %s SET email='%s', telefone='%s' WHERE id=%d;",
+						tabela,
+						email,
+						telefone,
+						id
+			);
+			
+			conn.executeUpdate(update);
+			conn.fecharConexao();
+			
 		}catch(SQLException e) {
 			System.out.print("erro ao atualizar dados na tabela");
 		}
 	}
 	
-	public void delete(Paciente p) {
-		Conexao con = null;
+	public void delete(int id) {
+		Conexao conn = null;
+		
 		try {
-			con = new Conexao();
-			con.executeUpdate("DELETE FROM pacientes WHERE id =" + p.getID_paciente());
+			conn = new Conexao();
+			
+			String update = String.format(
+					"DELETE FROM %s WHERE id=%d;",
+						tabela,
+						id
+			);
+			
+			conn.executeUpdate(update);
+			
 		}catch(SQLException e){
 			System.out.print("erro ao excluir usuário");
+		}
+	}
+	
+	public Paciente login(String email, String senha) {
+		Conexao conn = null;
+		
+		try {
+			conn = new Conexao();
+			
+			String query = String.format(
+					"SELECT * FROM %s WHERE email='%s' AND senha='%s';",
+						tabela,
+						email,
+						senha
+			);
+			
+			ResultSet rs = conn.executeQuery(query);
+			
+			if(rs.next()) {
+				System.out.print("login realizado com sucesso");
+				
+				Paciente paciente = new Paciente(
+						rs.getInt("id"),
+						rs.getString("nome"),
+						rs.getString("email"),
+						rs.getDate("nascimento"),
+						rs.getString("telefone"),
+						rs.getString("senha")
+				);
+				
+				conn.fecharConexao();
+				
+				return paciente;
+				
+			}else {
+				conn.fecharConexao();
+				
+				return null;
+			}
+
+		}catch(SQLException e) {
+			System.out.print("erro ao ler os dados da tabela");
+			return null;
 		}
 	}
 }

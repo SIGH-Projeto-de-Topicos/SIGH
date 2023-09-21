@@ -3,69 +3,69 @@ package model;
 import java.sql.Date;
 
 public class Paciente {
-	private Integer ID_paciente;
+	private Integer id;
 	private String nome;
 	private String email;
-	private Date datNasc;
-	private String n_tel;
+	private Date nascimento;
+	private String telefone;
 	private String senha;
 	
-	public Paciente(int ID_paciente, String nome, String email, Date datNasc, String n_tel, String senha){
-		setID_paciente(ID_paciente);
+	public Paciente(int id, String nome, String email, Date nascimento, String telefone, String senha) {
+		setId(id);
 		setNome(nome);
 		setEmail(email);
 		setSenha(senha);
-		setDatNasc(datNasc);
-		setN_tel(n_tel);
-	}
-	
-	public Paciente (String nome, String email, Date datNasc, String n_tel, String senha){
-		setNome(nome);
-		setEmail(email);
+		setNascimento(nascimento);
+		setTelefone(telefone);
 		setSenha(senha);
-		setDatNasc(datNasc);
-		setN_tel(n_tel);
 	}
 	
-	public int getID_paciente() {
-		return ID_paciente;
-	}
-	public void setID_paciente(int iD_paciente) {
-		ID_paciente = iD_paciente;
+	
+	public int getId() {
+		return id;
 	}
 	
 	public String getNome() {
 		return nome;
 	}
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
 	
 	public String getEmail() {
 		return email;
 	}
-	public void setEmail(String email) {
-		this.email = email;
+	
+	public Date getNascimento() {
+		return nascimento;
 	}
 	
-	public Date getDatNasc() {
-		return datNasc;
+	public String getTelefone() {
+		return telefone;
 	}
-	public void setDatNasc(Date datNasc) {
-		this.datNasc = datNasc;
-	}
-	
-	public String getN_tel() {
-		return n_tel;
-	}
-	public void setN_tel(String n_tel) {
-		this.n_tel = n_tel;
-	}
-	
 	
 	public String getSenha() {
 		return senha;
 	}
+	
+	
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
+	public void setNascimento(Date nascimento) {
+		this.nascimento = nascimento;
+	}
+	
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+	
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
