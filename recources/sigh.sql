@@ -1,10 +1,8 @@
-CREATE DATABASE  IF NOT EXISTS `sigh` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `sigh`;
--- MySQL dump 10.13  Distrib 8.0.34, for Linux (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.22, for Win64 (x86_64)
 --
 -- Host: localhost    Database: sigh
 -- ------------------------------------------------------
--- Server version	8.0.34-0ubuntu0.22.04.1
+-- Server version	8.0.22
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -27,7 +25,8 @@ DROP TABLE IF EXISTS `consulta`;
 CREATE TABLE `consulta` (
   `id` int NOT NULL AUTO_INCREMENT,
   `clinica` varchar(45) NOT NULL,
-  `horario` varchar(45) NOT NULL,
+  `data` date NOT NULL,
+  `hora` time NOT NULL,
   `modalidade` varchar(45) NOT NULL,
   `idpaciente` int DEFAULT NULL,
   `idmedico` int DEFAULT NULL,
@@ -114,4 +113,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-09-21  1:20:24
+-- Dump completed on 2023-09-21 14:00:54
