@@ -1,16 +1,14 @@
 package model;
 
-import java.sql.Date;
-
 public class Paciente {
 	private Integer id;
 	private String nome;
 	private String email;
-	private Date nascimento;
+	private String nascimento;
 	private String telefone;
 	private String senha;
 	
-	public Paciente(int id, String nome, String email, Date nascimento, String telefone, String senha) {
+	public Paciente(int id, String nome, String email, String nascimento, String telefone, String senha) {
 		setId(id);
 		setNome(nome);
 		setEmail(email);
@@ -33,7 +31,7 @@ public class Paciente {
 		return email;
 	}
 	
-	public Date getNascimento() {
+	public String getNascimento() {
 		return nascimento;
 	}
 	
@@ -58,7 +56,7 @@ public class Paciente {
 		this.email = email;
 	}
 	
-	public void setNascimento(Date nascimento) {
+	public void setNascimento(String nascimento) {
 		this.nascimento = nascimento;
 	}
 	

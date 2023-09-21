@@ -3,14 +3,13 @@ package dao;
 import util.Conexao;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Date;
 
 import model.Paciente;
 
 public class PacienteDao {
 	private final String tabela = "paciente";
 	
-	public Paciente insert(String nome, String email, Date nascimento, String telefone, String senha){
+	public Paciente insert(String nome, String email, String nascimento, String telefone, String senha){
 		Conexao conn = null;
 		
 		try {
@@ -29,7 +28,7 @@ public class PacienteDao {
 					
 			
 			String query = String.format(
-					"INSERT INTO %s (id, nome, email, nascimento, telefone, senha) VALUES (%d, '%s', '%s', %d, '%s', '%s');",
+					"INSERT INTO %s (id, nome, email, nascimento, telefone, senha) VALUES (%d, '%s', '%s', '%s', '%s', '%s');",
 						tabela,
 						paciente.getId(),
 						paciente.getNome(),
@@ -71,7 +70,7 @@ public class PacienteDao {
 						rs.getInt("id"),
 						rs.getString("nome"),
 						rs.getString("email"),
-						rs.getDate("nascimento"),
+						rs.getDate("nascimento").toString(),
 						rs.getString("telefone"),
 						rs.getString("senha")
 				);
@@ -150,7 +149,7 @@ public class PacienteDao {
 						rs.getInt("id"),
 						rs.getString("nome"),
 						rs.getString("email"),
-						rs.getDate("nascimento"),
+						rs.getDate("nascimento").toString(),
 						rs.getString("telefone"),
 						rs.getString("senha")
 				);
