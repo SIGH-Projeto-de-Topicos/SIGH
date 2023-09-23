@@ -6,8 +6,8 @@ public class Conexao {
 	private final String host = "localhost";
 	private final String port = "3306";
 	private final String database = "sigh";
-	private final String user = "root";
-	private final String password = "ifpa";
+	private final String user = "murilo";
+	private final String password = "";
 
     public String status = "Não conectou...";
     

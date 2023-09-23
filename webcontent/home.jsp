@@ -3,12 +3,19 @@
 <%@ page import="dao.PacienteDao" %>
 <%@ page import="dao.ConsultaDao" %>
 <%@ page import="model.Paciente" %>
+<%@ page import="model.Consulta" %>
 <%@ page import="java.sql.ResultSet" %>
 <%@ page import="java.util.ArrayList" %>
 <%
 	int id = (Integer)session.getAttribute("id");
-	PacienteDao pDao = new PacienteDao();
-	Paciente p = pDao.getPaciente(id);
+
+	PacienteDao pacienteDao = new PacienteDao();
+	Paciente paciente = pacienteDao.get(id);
+	
+	if (paciente == null) {
+		response.sendRedirect("./index.jsp");
+	}
+	
 %>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -27,20 +34,20 @@
 	<header>	
         <img src="images/logo.png">
         <div id="user">
-            <span id="name"><%=p.getNome()%></span>
+            <span id="name"><%=paciente.getNome()%></span>
 			<svg onClick="openNav()" id="user-img" width="100" height="100">
 				<circle cx="50" cy="50" r="35" fill="#238BAD" />
-				<text fill="#ffffff" font-size="40" font-family="Open Sans" x="50%" y="52%" dominant-baseline="middle" text-anchor="middle"><%=p.getNome().charAt(0)%></text>
+				<text fill="#ffffff" font-size="40" font-family="Open Sans" x="50%" y="52%" dominant-baseline="middle" text-anchor="middle"><%=paciente.getNome().charAt(0)%></text>
 			</svg>
         </div>
     </header>
     <div id="sidenav-background" onClick="closeNav()"></div>
     <nav id="sidenav">
     	<div id="sidenav-title">
-    		<span id="sidebar-name"><%=p.getNome() %></span>
+    		<span id="sidebar-name"><%=paciente.getNome() %></span>
     		<svg id="user-img" width="100" height="100">
 				<circle cx="50" cy="50" r="35" fill="#238BAD" />
-				<text fill="#ffffff" font-size="40" font-family="Open Sans" x="50%" y="52%" dominant-baseline="middle" text-anchor="middle"><%=p.getNome().charAt(0)%></text>
+				<text fill="#ffffff" font-size="40" font-family="Open Sans" x="50%" y="52%" dominant-baseline="middle" text-anchor="middle"><%=paciente.getNome().charAt(0)%></text>
 			</svg>
     	</div>
     	<div id="sidenav-links"> 
@@ -61,24 +68,24 @@
     			<div class="ti">Horário</div>
     			<div class="ti">Data</div>
     			<div class="ti">Especialidade</div>
-    			<div class="ti">Modalidade</div>
+    			<div class="ti">Modalidade</div> 
     		</div>
     	<%
-			ConsultaDao cDao = new ConsultaDao();
-			ResultSet rs = cDao.Query(p.getID_paciente());
-			while(rs.next()){
+			ConsultaDao consultaDao = new ConsultaDao();
+			ArrayList<Consulta> consultas = consultaDao.fromPaciente(paciente.getId());
+			
+			for (Consulta consulta : consultas) {				
 		%>		
-		    <div class="tr" id="<%=rs.getInt("id")%>" onclick="expand(<%=rs.getInt("id")%>)">
+		    <div class="tr" id="<%=consulta.getId()%>" onclick="expand(<%=consulta.getId()%>)">
 		    	<div class="ti-group">
-			    	<div class="ti"><%=rs.getString("clinica") %></div>
-			    	<div class="ti"><%=rs.getTime("hora") %></div>
-			   		<div class="ti"><%=rs.getDate("data")%> </div>
-			    	<div class="ti"><%=rs.getString("especialidade") %></div>
-			   		<div class="ti"><%=rs.getString("modalidade") %></div>
+			    	<div class="ti"><%=consulta.getClinica()%></div>
+			    	<div class="ti"><%=consulta.getHora()%></div>
+			   		<div class="ti"><%=consulta.getData()%> </div> 
+			   		<div class="ti"><%=consulta.getModalidade()%></div>
 		    	</div>
 		    	<div class="btn-group" hidden="true">
-		    		<button class="btn-cancel" onclick="deletarConsulta(<%=rs.getInt("id")%>);">Cancelar</button>
-		    		<button class="btn-edit" onclick="editarConsulta(<%=rs.getInt("id")%>);">Editar</button>
+		    		<button class="btn-cancel" onclick="deletarConsulta(<%=consulta.getId()%>);">Cancelar</button>
+		    		<button class="btn-edit" onclick="editarConsulta(<%=consulta.getId()%>);">Editar</button>
 		    	</div>
 		    </div>
 		<%

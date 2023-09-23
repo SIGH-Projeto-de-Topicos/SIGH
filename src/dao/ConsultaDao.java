@@ -7,6 +7,7 @@ import java.sql.SQLException;
 
 import java.sql.Date;
 import java.time.LocalTime;
+import java.util.ArrayList;
 
 public class ConsultaDao {	
 	private final String tabela = "consulta";
@@ -86,6 +87,45 @@ public class ConsultaDao {
 		}catch(SQLException e) {
 			System.out.print("resultados nao encontrados");
 			return null;	
+		}
+	}
+
+	public ArrayList<Consulta> fromPaciente(int idPaciente) {
+		Conexao conn = null;
+		
+		try {
+			conn = new Conexao();
+			
+			ArrayList<Consulta> consultas = new ArrayList<Consulta>();
+			Consulta consulta = null;
+			
+			String query = String.format(
+					"SELECT * FROM %s WHERE idpaciente=%d;",
+						tabela,
+						idPaciente
+			);
+			
+			ResultSet rs = conn.executeQuery(query);
+			
+			while (rs.next()) {
+				consulta = new Consulta(
+						rs.getInt("id"),
+						rs.getString("clinica"),
+						rs.getDate("data"),
+						rs.getTime("hora").toLocalTime(),
+						rs.getString("modalidade"),
+						rs.getInt("idpaciente"),
+						rs.getInt("idmedico")
+				);
+				
+				consultas.add(consulta);
+			}
+			
+			return consultas;
+			
+		} catch (SQLException e) {
+			System.out.print("erro ao pegar as consultas");
+			return new ArrayList<Consulta>();
 		}
 	}
 	

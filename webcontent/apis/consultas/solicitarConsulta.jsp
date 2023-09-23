@@ -6,17 +6,20 @@
 <%@ page import="model.Consulta"%>
 <%
 	if (session.getAttribute("id") == null) {
-		response.sendRedirect("../");
-	} else {		
-		ConsultaDao cDao = new ConsultaDao();
-		cDao.insert(new Consulta(
-					request.getParameter("clinica"),
-					Date.valueOf(request.getParameter("date")),
-					LocalTime.parse(request.getParameter("time")),
-					request.getParameter("especialidade"),
-					request.getParameter("modalidade"),
-					(Integer)session.getAttribute("id")
-				));
-		response.sendRedirect("../home.jsp");
-	}
+		response.sendRedirect("../../index.jsp");
+	} 
+	/*else {		
+		ConsultaDao consultaDao = new ConsultaDao();
+		consultaDao.insert(
+				request.getParameter("clinica"),
+				data,
+				hora,
+				modalidade,
+				idPaciente,
+				idMedico
+			);
+		response.sendRedirect("../../home.jsp");
+	}*/
 %>
+
+that is not working lol

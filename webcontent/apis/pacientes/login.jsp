@@ -5,12 +5,16 @@
 <%@ page import="model.Paciente" %>
 
 <%
-	PacienteDao pDao = new PacienteDao();
-	Paciente p = pDao.login(request.getParameter("email"), request.getParameter("password"));
-	if(p == null){
-		response.sendRedirect("../index.jsp");
+	PacienteDao pacienteDao = new PacienteDao();
+	Paciente paciente = pacienteDao.login(
+			request.getParameter("email"),
+			request.getParameter("password")
+	);
+	
+	if(paciente == null){
+		response.sendRedirect("../../index.jsp");
 	} else {
-		session.setAttribute("id", p.getID_paciente());
-		response.sendRedirect("../home.jsp");
+		session.setAttribute("id", paciente.getId());
+		response.sendRedirect("../../home.jsp");
 	}
 %>

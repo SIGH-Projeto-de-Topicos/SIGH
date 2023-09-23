@@ -15,9 +15,8 @@
 	);
 	
 	if (paciente == null) {
-		response.sendRedirect("../../index.jsp");		
+		response.sendRedirect("../../cadastro.jsp");		
 	} else {
-		session.setAttribute("id", paciente.getId());
-		response.sendRedirect("../../home.jsp");
+		response.sendRedirect("../../index.jsp");
 	}
 %>

@@ -25,7 +25,7 @@
     </header>
     <div id="section">
 		<h1 id="title">Solicitar Consulta</h1>
-		<form action="consultas/solicitarConsulta.jsp" target="_self" method="post">
+		<form action="apis/consultas/solicitarConsulta.jsp" target="_self" method="post">
 			<select name="clinica" required>
 				<option value="" disabled selected>Clínica</options>
 				<option value="wa">waaa</option>	
