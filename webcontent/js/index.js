@@ -5,7 +5,7 @@ function loginForm() {
 	"<div id='login-overlay'></div>" + 
   		"<div id='login'>" +
     	"<h1>Entrar</h1>" +
-   		"<form method='POST' action='pacientes/login.jsp'>" +
+   		"<form method='POST' action='apis/pacientes/login.jsp'>" +
       		"<div class='form-group'>" +
         		"<label class='form-label' for='email'>E-mail</label>" +
        			"<input placeholder='Entre com seu e-mail...' name='email' type='email' id='email' class='form-control' value=''>" +

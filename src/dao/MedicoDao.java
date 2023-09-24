@@ -1,15 +1,15 @@
 package dao;
 
-import util.Conexao;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import model.Paciente;
+import model.Medico;
+import util.Conexao;
 
-public class PacienteDao {
-	private final String tabela = "paciente";
+public class MedicoDao {
+	private final String tabela = "medico";
 	
-	public Paciente insert(String nome, String email, String nascimento, String telefone, String senha){
+	public Medico insert(String nome, String email, String especialidade, String uf, String crm, String hospital, String senha) {
 		Conexao conn = null;
 		
 		try {
@@ -17,39 +17,43 @@ public class PacienteDao {
 			
 			int id = conn.retornaIDMax(tabela);
 			
-			Paciente paciente = new Paciente(
+			Medico medico = new Medico(
 					id,
 					nome,
 					email,
-					nascimento,
-					telefone,
+					especialidade,
+					uf,
+					crm,
+					hospital,
 					senha
 			);
 					
 			
 			String query = String.format(
-					"INSERT INTO %s (id, nome, email, nascimento, telefone, senha) VALUES (%d, '%s', '%s', '%s', '%s', '%s');",
+					"INSERT INTO %s (id, nome, email, especialidade, uf, crm, hospital, senha) VALUES (%d, '%s', '%s', '%s', '%s', '%s', '%s', '%s');",
 						tabela,
-						paciente.getId(),
-						paciente.getNome(),
-						paciente.getEmail(),
-						paciente.getNascimento(),
-						paciente.getTelefone(),
-						paciente.getSenha()
+						medico.getId(),
+						medico.getNome(),
+						medico.getEmail(),
+						medico.getEspecialidade(),
+						medico.getUf(),
+						medico.getCrm(),
+						medico.getHospital(),
+						medico.getSenha()
 			);
 			
 			conn.executeUpdate(query);
 			conn.fecharConexao();
 			
-			return paciente;
+			return medico;
 			
 		}catch(SQLException e) {
 			System.out.print("erro ao inserir dados na tabela");
 			return null;
 		}
 	}
-	
-	public Paciente get(int id) {
+
+	public Medico get(int id) {
 		Conexao conn = null;
 		
 		try {
@@ -61,53 +65,33 @@ public class PacienteDao {
 						id
 			);
 			
-			Paciente paciente = null;
+			Medico medico = null;
 			
 			ResultSet rs = conn.executeQuery(query);
 			
 			if (rs.next()) {
-				paciente = new Paciente(
+				medico = new Medico(
 						rs.getInt("id"),
 						rs.getString("nome"),
 						rs.getString("email"),
-						rs.getDate("nascimento").toString(),
-						rs.getString("telefone"),
+						rs.getString("especialidade"),
+						rs.getString("uf"),
+						rs.getString("crm"),
+						rs.getString("hospital"),
 						rs.getString("senha")
 				);
 			}
 			
 			conn.fecharConexao();
 			
-			return paciente;
+			return medico;
 
 		}catch(SQLException e) {
 			System.out.print("erro ao ler os dados da tabela");
 			return null;
 		}
 	}
-	
-	public void update(int id, String email, String telefone) {
-		Conexao conn = null;
-		
-		try {
-			conn = new Conexao();
-			
-			String update = String.format(
-					"UPDATE %s SET email='%s', telefone='%s' WHERE id=%d;",
-						tabela,
-						email,
-						telefone,
-						id
-			);
-			
-			conn.executeUpdate(update);
-			conn.fecharConexao();
-			
-		} catch(SQLException e) {
-			System.out.print("erro ao atualizar dados na tabela");
-		}
-	}
-	
+
 	public void delete(int id) {
 		Conexao conn = null;
 		
@@ -125,9 +109,9 @@ public class PacienteDao {
 		}catch(SQLException e){
 			System.out.print("erro ao excluir usuário");
 		}
-	}
-	
-	public Paciente login(String email, String senha) {
+	} 
+
+	public Medico login(String email, String senha) {
 		Conexao conn = null;
 		
 		try {
@@ -145,18 +129,20 @@ public class PacienteDao {
 			if(rs.next()) {
 				System.out.print("login realizado com sucesso");
 				
-				Paciente paciente = new Paciente(
+				Medico medico = new Medico(
 						rs.getInt("id"),
 						rs.getString("nome"),
 						rs.getString("email"),
-						rs.getDate("nascimento").toString(),
-						rs.getString("telefone"),
+						rs.getString("especialidade"),
+						rs.getString("uf"),
+						rs.getString("crm"),
+						rs.getString("hospital"),
 						rs.getString("senha")
 				);
 				
 				conn.fecharConexao();
 				
-				return paciente;
+				return medico;
 				
 			}else {
 				conn.fecharConexao();
