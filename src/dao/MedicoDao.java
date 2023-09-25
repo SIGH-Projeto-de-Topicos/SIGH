@@ -2,6 +2,7 @@ package dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import model.Medico;
 import util.Conexao;
@@ -17,29 +18,27 @@ public class MedicoDao {
 			
 			int id = conn.retornaIDMax(tabela);
 			
-			Medico medico = new Medico(
-					id,
-					nome,
-					email,
-					especialidade,
-					uf,
-					crm,
-					hospital,
-					senha
-			);
+			Medico medico = new Medico();
+			medico.setId(id);
+			medico.setNome(nome);
+			medico.setEmail(email);
+			medico.setEspecialidade(especialidade);
+			medico.setUf(uf);
+			medico.setCrm(crm);
+			medico.setHospital(hospital);
 					
 			
 			String query = String.format(
 					"INSERT INTO %s (id, nome, email, especialidade, uf, crm, hospital, senha) VALUES (%d, '%s', '%s', '%s', '%s', '%s', '%s', '%s');",
 						tabela,
-						medico.getId(),
-						medico.getNome(),
-						medico.getEmail(),
-						medico.getEspecialidade(),
-						medico.getUf(),
-						medico.getCrm(),
-						medico.getHospital(),
-						medico.getSenha()
+						id,
+						nome,
+						email,
+						especialidade,
+						uf,
+						crm,
+						hospital,
+						senha
 			);
 			
 			conn.executeUpdate(query);
@@ -70,21 +69,58 @@ public class MedicoDao {
 			ResultSet rs = conn.executeQuery(query);
 			
 			if (rs.next()) {
-				medico = new Medico(
-						rs.getInt("id"),
-						rs.getString("nome"),
-						rs.getString("email"),
-						rs.getString("especialidade"),
-						rs.getString("uf"),
-						rs.getString("crm"),
-						rs.getString("hospital"),
-						rs.getString("senha")
-				);
+				medico = new Medico();
+				medico.setId(rs.getInt("id"));
+				medico.setNome(rs.getString("nome"));
+				medico.setEmail(rs.getString("email"));
+				medico.setEspecialidade(rs.getString("especialidade"));
+				medico.setUf(rs.getString("uf"));
+				medico.setCrm(rs.getString("crm"));
+				medico.setHospital(rs.getString("hospital"));
 			}
 			
 			conn.fecharConexao();
 			
 			return medico;
+
+		}catch(SQLException e) {
+			System.out.print("erro ao ler os dados da tabela");
+			return null;
+		}
+	}
+	
+	public ArrayList<Medico> getAll() {
+		Conexao conn = null;
+		
+		try {
+			conn = new Conexao();
+			
+			String query = String.format(
+					"SELECT * FROM %s",
+						tabela
+			);
+			
+			ArrayList<Medico> medicos = new ArrayList<Medico>();
+			Medico medico = null;
+			
+			ResultSet rs = conn.executeQuery(query);
+			
+			while (rs.next()) {
+				medico = new Medico();
+				medico.setId(rs.getInt("id"));
+				medico.setNome(rs.getString("nome"));
+				medico.setEmail(rs.getString("email"));
+				medico.setEspecialidade(rs.getString("especialidade"));
+				medico.setUf(rs.getString("uf"));
+				medico.setCrm(rs.getString("crm"));
+				medico.setHospital(rs.getString("hospital"));
+				
+				medicos.add(medico);
+			}
+			
+			conn.fecharConexao();
+			
+			return medicos;
 
 		}catch(SQLException e) {
 			System.out.print("erro ao ler os dados da tabela");
@@ -129,16 +165,14 @@ public class MedicoDao {
 			if(rs.next()) {
 				System.out.print("login realizado com sucesso");
 				
-				Medico medico = new Medico(
-						rs.getInt("id"),
-						rs.getString("nome"),
-						rs.getString("email"),
-						rs.getString("especialidade"),
-						rs.getString("uf"),
-						rs.getString("crm"),
-						rs.getString("hospital"),
-						rs.getString("senha")
-				);
+				Medico medico = new Medico();
+				medico.setId(rs.getInt("id"));
+				medico.setNome(rs.getString("nome"));
+				medico.setEmail(rs.getString("email"));
+				medico.setEspecialidade(rs.getString("especialidade"));
+				medico.setUf(rs.getString("uf"));
+				medico.setCrm(rs.getString("crm"));
+				medico.setHospital(rs.getString("hospital"));
 				
 				conn.fecharConexao();
 				

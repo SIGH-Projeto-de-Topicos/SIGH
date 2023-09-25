@@ -8,14 +8,9 @@ public class Paciente {
 	private String telefone;
 	private String senha;
 	
-	public Paciente(int id, String nome, String email, String nascimento, String telefone, String senha) {
-		setId(id);
-		setNome(nome);
-		setEmail(email);
-		setSenha(senha);
-		setNascimento(nascimento);
-		setTelefone(telefone);
-		setSenha(senha);
+	
+	public Paciente() {
+		
 	}
 	
 	
