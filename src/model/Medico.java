@@ -9,18 +9,12 @@ public class Medico {
 	private String crm;
 	private String hospital;
 	private String senha;
+
 	
-	public Medico(int id, String nome, String email, String especialidade, String uf, String crm, String hospital, String senha) {
-		setId(id);
-		setNome(nome);
-		setEmail(email);
-		setEspecialidade(especialidade);
-		setUf(uf);
-		setCrm(crm);
-		setHospital(hospital);
-		setSenha(senha);
+	public Medico() {
+		
 	}
-	
+
 	
 	public int getId() {
 		return id;

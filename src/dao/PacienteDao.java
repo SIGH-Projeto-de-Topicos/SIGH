@@ -17,25 +17,22 @@ public class PacienteDao {
 			
 			int id = conn.retornaIDMax(tabela);
 			
-			Paciente paciente = new Paciente(
-					id,
-					nome,
-					email,
-					nascimento,
-					telefone,
-					senha
-			);
-					
+			Paciente paciente = new Paciente();
+			paciente.setId(id);
+			paciente.setNome(nome);
+			paciente.setEmail(email);
+			paciente.setNascimento(nascimento);
+			paciente.setTelefone(telefone);					
 			
 			String query = String.format(
 					"INSERT INTO %s (id, nome, email, nascimento, telefone, senha) VALUES (%d, '%s', '%s', '%s', '%s', '%s');",
 						tabela,
-						paciente.getId(),
-						paciente.getNome(),
-						paciente.getEmail(),
-						paciente.getNascimento(),
-						paciente.getTelefone(),
-						paciente.getSenha()
+						id,
+						nome,
+						email,
+						nascimento,
+						telefone,
+						senha
 			);
 			
 			conn.executeUpdate(query);
@@ -66,14 +63,11 @@ public class PacienteDao {
 			ResultSet rs = conn.executeQuery(query);
 			
 			if (rs.next()) {
-				paciente = new Paciente(
-						rs.getInt("id"),
-						rs.getString("nome"),
-						rs.getString("email"),
-						rs.getDate("nascimento").toString(),
-						rs.getString("telefone"),
-						rs.getString("senha")
-				);
+				paciente = new Paciente();
+				paciente.setId(rs.getInt("id"));
+				paciente.setNome(rs.getString("nome"));
+				paciente.setNascimento(rs.getDate("nascimento").toString());
+				paciente.setTelefone(rs.getString("telefone"));
 			}
 			
 			conn.fecharConexao();
@@ -145,14 +139,11 @@ public class PacienteDao {
 			if(rs.next()) {
 				System.out.print("login realizado com sucesso");
 				
-				Paciente paciente = new Paciente(
-						rs.getInt("id"),
-						rs.getString("nome"),
-						rs.getString("email"),
-						rs.getDate("nascimento").toString(),
-						rs.getString("telefone"),
-						rs.getString("senha")
-				);
+				Paciente paciente = new Paciente();
+				paciente.setId(rs.getInt("id"));
+				paciente.setNome(rs.getString("nome"));
+				paciente.setNascimento(rs.getDate("nascimento").toString());
+				paciente.setTelefone(rs.getString("telefone"));
 				
 				conn.fecharConexao();
 				

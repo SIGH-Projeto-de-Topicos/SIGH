@@ -12,14 +12,9 @@ public class Consulta{
 	private int idPaciente;
 	private int idMedico;
 	
-	public Consulta(int id, String clinica, Date data, LocalTime hora, String modalidade, int idPaciente, int idMedico){
-		setId(id);
-		setClinica(clinica);
-		setData(data);
-		setHora(hora);
-		setModalidade(modalidade);
-		setIdPaciente(idPaciente);
-		setIdMedico(idMedico);
+	
+	public Consulta() {
+		
 	}
 	
 	

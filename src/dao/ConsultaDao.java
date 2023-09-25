@@ -20,25 +20,24 @@ public class ConsultaDao {
 			
 			int id = conn.retornaIDMax("consultas");
 			
-			Consulta consulta = new Consulta(
-					id,
-					clinica,
-					data,
-					hora,
-					modalidade,
-					idPaciente,
-					idMedico
-			);
+			Consulta consulta = new Consulta();
+			consulta.setId(id);
+			consulta.setClinica(clinica);
+			consulta.setData(data);
+			consulta.setHora(hora);
+			consulta.setModalidade(modalidade);
+			consulta.setIdPaciente(idPaciente);
+			consulta.setIdMedico(idMedico);
 			
 			String query = String.format(
 					"INSERT INTO %s (id, clinica, data, hora, modalidade, idpaciente, idmedico) VALUES (%d, '%s', '%s', '%s', '%s', %d, %d)",
 						tabela,
-						id,
-						data,
-						hora,
-						modalidade,
-						idPaciente,
-						idMedico
+						consulta.getId(),
+						consulta.getClinica(),
+						consulta.getHora(),
+						consulta.getModalidade(),
+						consulta.getIdPaciente(),
+						consulta.getIdMedico()
 			);
 			
 			conn.executeUpdate(query);
@@ -69,15 +68,14 @@ public class ConsultaDao {
 			ResultSet rs = conn.executeQuery(query);
 			
 			if (rs.next()) {
-				consulta = new Consulta(
-						rs.getInt("id"),
-						rs.getString("clinica"),
-						rs.getDate("data"),
-						rs.getTime("hora").toLocalTime(),
-						rs.getString("modalidade"),
-						rs.getInt("idpaciente"),
-						rs.getInt("idmedico")
-				);
+				consulta = new Consulta();
+				consulta.setId(rs.getInt("id"));
+				consulta.setClinica(rs.getString("clinica"));
+				consulta.setData(rs.getDate("data"));
+				consulta.setHora(rs.getTime("hora").toLocalTime());
+				consulta.setModalidade(rs.getString("modalidade"));
+				consulta.setIdPaciente(rs.getInt("idpaciente"));
+				consulta.setIdMedico(rs.getInt("idmedico"));
 			}
 			
 			conn.fecharConexao();
@@ -108,15 +106,14 @@ public class ConsultaDao {
 			ResultSet rs = conn.executeQuery(query);
 			
 			while (rs.next()) {
-				consulta = new Consulta(
-						rs.getInt("id"),
-						rs.getString("clinica"),
-						rs.getDate("data"),
-						rs.getTime("hora").toLocalTime(),
-						rs.getString("modalidade"),
-						rs.getInt("idpaciente"),
-						rs.getInt("idmedico")
-				);
+				consulta = new Consulta();
+				consulta.setId(rs.getInt("id"));
+				consulta.setClinica(rs.getString("clinica"));
+				consulta.setData(rs.getDate("data"));
+				consulta.setHora(rs.getTime("hora").toLocalTime());
+				consulta.setModalidade(rs.getString("modalidade"));
+				consulta.setIdPaciente(rs.getInt("idpaciente"));
+				consulta.setIdMedico(rs.getInt("idmedico"));
 				
 				consultas.add(consulta);
 			}
