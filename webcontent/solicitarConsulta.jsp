@@ -52,7 +52,7 @@
 				</label>
 			</div>
 			
-			<button class="button2" type="submit"><img src="images/search.png"></button>
+			<button class="button2" type="submit"><img style="width:28px; height:28px;" src="images/saveiko.svg"></button>
 		</form>
     </div>
 	<footer>
