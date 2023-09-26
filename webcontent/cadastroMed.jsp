@@ -11,26 +11,26 @@
 <body>
 	<form id="card" action="" method="">
 		<div class="title">		
-			<img alt="logo" src="images/logo.png" style="max-width:60%">
+			<img alt="logo" src="images/logo.png">
 			<h1>Cadastre-se</h1>
 		</div>
 		<div class="form-container">
-			<label>Nome:</label><br>
+			<label>Nome</label><br>
 			<input type="text" placeholder="nome" name="nome">
 		</div>
 		<div class="form-container">
-			<label>UF:</label><br>
+			<label>UF</label><br>
 			<input type="text" placeholder="nome" name="nome">
 		</div>
 		<div class="form-container">
-			<label>CRM:</label><br>
+			<label>CRM</label><br>
 			<input type="text" placeholder="nome" name="nome">
 		</div>
 		<div class="form-container">
-			<label>Hospital:</label><br>
-			<select>
+			<label>Hospital</label><br>
+			<select id="form-select">
 				<%
-					String foda[]= {"foda1","foda2","foda3"};
+					String foda[]= {"foda","foda","foda","foda","foda","foda","foda","foda","foda","foda","foda","foda"};
 					for(String i:foda){
 				%>
 					<option><%=i%></option>
@@ -39,11 +39,11 @@
 				%>
 			</select>
 		<div class="form-container">
-			<label>email:</label><br>
+			<label>Email:</label><br>
 			<input type="text" placeholder="nome" name="nome">
 		</div>
 		<div class="form-container">
-			<label>senha:</label><br>
+			<label>Senha:</label><br>
 			<input type="text" placeholder="nome" name="nome">
 		</div>
 		</div>

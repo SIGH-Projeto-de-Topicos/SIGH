@@ -55,7 +55,6 @@ body {
 			font-family: 'Open Sans', sans-serif;
 			font-size: 16px;
 		}
-		#card option,
 		#card input[type="text"],
 		#card input[type="date"],
 		#card input[type="tel"],
@@ -93,3 +92,26 @@ body {
 			
 			color: red;
 		}
+		#form-select{
+			background-color: #FFFFFF;
+			border-radius: 0.25rem;
+			border: 1px solid #ced4da;;
+			height: 34.5px;
+			
+		}
+		
+		#form-select option{
+			height: 36px;
+			color: #495057;
+		}
+		
+		.title{
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			align-items: center;
+			align-self: stretch; 
+		}
+		.title h1{font-size: 30px;}
+		.title img{max-width: 36%;}
+		
