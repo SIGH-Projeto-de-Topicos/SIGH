@@ -59,7 +59,7 @@
     	
     	<div class="tr-1">
     		<div class="ti-1">Horário</div>
-			<div class="ti-1">Horario_consulta</div>
+			<div class="ti-1"><% %></div>
     	</div>
     	
     	<div class="tr-1">

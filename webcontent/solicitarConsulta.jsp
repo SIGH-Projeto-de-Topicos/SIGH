@@ -1,5 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>   
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="dao.MedicoDao" %>
+<%@ page import="model.Medico" %>
+<%
+	MedicoDao medicoDao = new MedicoDao();
+	//ArrayList<Medico> medico = medicoDao.getAll();
+%>
+					
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -36,10 +44,17 @@
 			<input type="time" name="time" required>
 			
 			<select name="especialidade" required>
-				<option value="" disabled selected>Especialidade</options>
+				<option value="" disabled selected>Especialidade</option>
 				<option value="Pindamonhangaba">Pindamonhagaba</option>	
 			</select>
-			
+			<select> 
+				<option value=" " disabled selected>Médico</option>
+				<%
+					//for(Medico med:medico){
+				%>
+					<!--<option value=""> </option>-->
+				<%//}%>
+			</select>
 			<div id="btn-container">
 				<label for="presencial" class="btn-selected" id="presencial-label">
 					Presencial

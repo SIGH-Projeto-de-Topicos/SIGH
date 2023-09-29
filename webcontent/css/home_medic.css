@@ -3,7 +3,7 @@ html{
 }
 /*homeMedic.jps*/
 .navmed{
-	margin:20px;
+	margin-right: 110px;
 }
 .navmed span{
 	display:flex;
@@ -24,7 +24,7 @@ html{
 	width:55px;
 }
 .u-name{
-	font-size: 20px;
+	font-size: 30px;
 	font-weight: 600;
 	padding-top: 10px;
   	padding-bottom: 10px;	
@@ -35,7 +35,6 @@ html{
 	display:flex;
 	flex-direction: column;
 	align-items:center;
-	gap: 5% 0%;
 	margin:60px;
 }
 
@@ -47,8 +46,8 @@ html{
 	align-self: stretch; 
 	
 	border-radius:15px;
-	padding: 1.8px 30px;
-	margin: 3px 350px;
+	padding: 3px 60px;
+	margin: 3px 150px;
 	
 	font-size: 0.75cm;
 	font-weight:600;

@@ -29,6 +29,7 @@
 		<div class="form-container">
 			<label>Hospital</label><br>
 			<select id="form-select">
+				<option value="" disabled selected>hospital</option>
 				<%
 					String foda[]= {"foda","foda","foda","foda","foda","foda","foda","foda","foda","foda","foda","foda"};
 					for(String i:foda){
@@ -39,11 +40,11 @@
 				%>
 			</select>
 		<div class="form-container">
-			<label>Email:</label><br>
+			<label>Email</label><br>
 			<input type="text" placeholder="nome" name="nome">
 		</div>
 		<div class="form-container">
-			<label>Senha:</label><br>
+			<label>Senha</label><br>
 			<input type="text" placeholder="nome" name="nome">
 		</div>
 		</div>
