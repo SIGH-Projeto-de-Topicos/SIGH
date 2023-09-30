@@ -1,13 +1,44 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>   
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="dao.PacienteDao"%>
+<%@ page import="model.Paciente" %>
 <%@ page import="dao.MedicoDao" %>
 <%@ page import="model.Medico" %>
+<%!
+String[] convenios = {
+		"Particular",
+		"Unimed",
+		"Bradesco",
+		"Amil",
+		"Cassi",
+		"Geap",
+		"Mediservice",
+		"Saúde Caixa",
+		"Omint",
+		"Sulamerica"};
+%>
 <%
 	MedicoDao medicoDao = new MedicoDao();
-	//ArrayList<Medico> medico = medicoDao.getAll();
+	ArrayList<Medico> medico = medicoDao.getAll();
+	int id = (Integer)session.getAttribute("id");
+	session.setAttribute("id", id);
+	Paciente pac = new PacienteDao().get(id);
 %>
-					
+<%!
+String[] especialidades = {
+		"Médico clínico",
+        "Médico pediatra",
+        "Médico cardiologista",
+        "Médico ginecologista e obstetra",
+        "Médico psiquiatra",
+        "Médico dermatologista",
+        "Médico ortopedista e traumatologista",
+        "Médico oftalmologista",
+        "Médico endocrinologista e metabologista",
+        "Psicólogo clínico"
+	};
+%>					
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -24,10 +55,10 @@
 	<header>	
         <img src="images/logo.png">
         <div id="user">
-            <span id="name">Murilo Henrique Conde Da Luz</span>
+            <span id="name"><%=pac.getNome() %></span>
 			<svg onClick="openNav()" id="user-img" width="100" height="100">
-				<circle cx="50" cy="50" r="48" fill="#238BAD" />
-				<text fill="#ffffff" font-size="45" font-family="Open Sans" x="13.25" y="65">MH</text>
+				<circle cx="50" cy="50" r="35" fill="#238BAD" />
+				<text fill="#ffffff" font-size="40" font-family="Open Sans" x="40%" y="60%"><%=pac.getNome().charAt(0) %></text>
 			</svg>
         </div>
     </header>
@@ -35,8 +66,12 @@
 		<h1 id="title">Solicitar Consulta</h1>
 		<form action="apis/consultas/solicitarConsulta.jsp" target="_self" method="post">
 			<select name="clinica" required>
-				<option value="" disabled selected>Clínica</options>
-				<option value="wa">waaa</option>	
+				<option value="" disabled selected>Convênio</options>
+				<%for(String convenio:convenios){ %>
+					<option value="<%=convenio%>">
+						<%=convenio%>
+					</option>
+				<%} %>	
 			</select>
 		
 			<input type="date" name="date" required>
@@ -45,15 +80,25 @@
 			
 			<select name="especialidade" required>
 				<option value="" disabled selected>Especialidade</option>
-				<option value="Pindamonhangaba">Pindamonhagaba</option>	
+				<%
+					for(String especialidade:especialidades){
+				%>
+						<option name="especialidade" value="<%=especialidade%>">
+							<%=especialidade %>
+						</option>
+				<%
+					}
+				%>				
 			</select>
-			<select> 
+			<select name="idMedico"> 
 				<option value=" " disabled selected>Médico</option>
 				<%
-					//for(Medico med:medico){
+					for(Medico med:medico){
 				%>
-					<!--<option value=""> </option>-->
-				<%//}%>
+					<option value="<%=med.getId()%>" >
+						<%=med.getNome() %>
+					</option>
+				<%}%>
 			</select>
 			<div id="btn-container">
 				<label for="presencial" class="btn-selected" id="presencial-label">

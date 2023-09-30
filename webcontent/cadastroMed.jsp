@@ -1,5 +1,62 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%!
+	String[] UF= {
+			"AC",
+	     	"AL",
+	    	"AP",
+	   		"AM",
+	    	"BA",
+	    	"CE",
+	    	"DF",
+	    	"ES",
+	   		"GO",
+	   		"MA",
+	   		"MT",
+	   		"MS",
+    		"MG",
+    		"PA",
+    		"PB",
+	    	"PR",
+	   		"PE",
+	   		"PI",
+	   		"RJ",
+	   		"RN",
+    		"RS",
+	   		"RO",
+    		"RR",
+	   		"SC",
+	   		"SP",
+	   		"SE",
+    		"TO"
+    };
+
+	String[] especialidades = {
+		"Médico clínico",
+        "Médico pediatra",
+        "Médico cardiologista",
+        "Médico ginecologista e obstetra",
+        "Médico psiquiatra",
+        "Médico dermatologista",
+        "Médico ortopedista e traumatologista",
+        "Médico oftalmologista",
+        "Médico endocrinologista e metabologista",
+        "Psicólogo clínico"
+	};
+	
+	String[] convenios = {
+			"Particular",
+			"Unimed",
+			"Bradesco",
+			"Amil",
+			"Cassi",
+			"Geap",
+			"Mediservice",
+			"Saúde Caixa",
+			"Omint",
+			"Sulamerica"};
+	
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,45 +66,73 @@
 	<title>Insert title here</title>
 </head>
 <body>
-	<form id="card" action="" method="">
+	<form id="card" action="apis/medicos/cadastrarMed.jsp" method="GET">
 		<div class="title">		
 			<img alt="logo" src="images/logo.png">
 			<h1>Cadastre-se</h1>
 		</div>
+		
 		<div class="form-container">
 			<label>Nome</label><br>
 			<input type="text" placeholder="nome" name="nome">
 		</div>
+		
 		<div class="form-container">
 			<label>UF</label><br>
-			<input type="text" placeholder="nome" name="nome">
+			<select id="form-select">
+				
+				<option value="" disabled selected>UF</option>
+				<%
+					for(String UF:UF){
+				%>
+					<option name="UF" value="<%=UF%>"><%=UF%></option>
+				<%}%>
+			</select>
 		</div>
+		
 		<div class="form-container">
 			<label>CRM</label><br>
-			<input type="text" placeholder="nome" name="nome">
+			<input type="text" placeholder="CRM" name="CRM">
 		</div>
+		
 		<div class="form-container">
-			<label>Hospital</label><br>
+			<label>Especialidade</label>
 			<select id="form-select">
-				<option value="" disabled selected>hospital</option>
+				<option value="" disabled selected>especialidade</option>
 				<%
-					String foda[]= {"foda","foda","foda","foda","foda","foda","foda","foda","foda","foda","foda","foda"};
-					for(String i:foda){
+					for(String especialidade:especialidades){
 				%>
-					<option><%=i%></option>
+					<option value="<%=especialidade%>" name="especialidade"><%=especialidade%></option>
 				<%
 					}
 				%>
 			</select>
+		</div>
+		
+		<div class="form-container">
+			<label>Hospital</label><br>
+			<select id="form-select">
+				<option value="" disabled selected>convenio</option>
+					<%
+						for(String convenios:convenios){
+					%>
+						<option name="convenio" value="<%=convenios%>"><%=convenios%></option>
+					<%
+						}
+					%>
+			</select>			
+		</div>
+		
 		<div class="form-container">
 			<label>Email</label><br>
-			<input type="text" placeholder="nome" name="nome">
+			<input type="email" placeholder="email" name="email">
 		</div>
+		
 		<div class="form-container">
 			<label>Senha</label><br>
-			<input type="text" placeholder="nome" name="nome">
+			<input type="password" placeholder="senha" name="senha">
 		</div>
-		</div>
+		<button class="button2">cadastrar</button>
 	</form>
 </body>
 </html>

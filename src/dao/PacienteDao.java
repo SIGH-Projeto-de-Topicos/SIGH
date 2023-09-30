@@ -41,7 +41,7 @@ public class PacienteDao {
 			return paciente;
 			
 		}catch(SQLException e) {
-			System.out.print("erro ao inserir dados na tabela");
+			System.out.print("erro ao inserir dados na tabela" + e);
 			return null;
 		}
 	}

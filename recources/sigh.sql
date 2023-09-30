@@ -88,7 +88,7 @@ CREATE TABLE `paciente` (
   `nome` varchar(45) NOT NULL,
   `email` varchar(45) NOT NULL,
   `nascimento` date NOT NULL,
-  `telefone` varchar(13) NOT NULL,
+  `telefone` varchar(15) NOT NULL,
   `senha` varchar(45) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email_UNIQUE` (`email`)

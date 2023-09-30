@@ -8,7 +8,7 @@
 <%@ page import="java.util.ArrayList" %>
 <%
 	int id = (Integer)session.getAttribute("id");
-
+	session.setAttribute("id", id);
 	PacienteDao pacienteDao = new PacienteDao();
 	Paciente paciente = pacienteDao.get(id);
 	
@@ -67,7 +67,6 @@
     			<div class="ti">Clínica</div>
     			<div class="ti">Horário</div>
     			<div class="ti">Data</div>
-    			<div class="ti">Especialidade</div>
     			<div class="ti">Modalidade</div> 
     		</div>
     	<%
@@ -79,9 +78,10 @@
 		    <div class="tr" id="<%=consulta.getId()%>" onclick="expand(<%=consulta.getId()%>)">
 		    	<div class="ti-group">
 			    	<div class="ti"><%=consulta.getClinica()%></div>
-			    	<div class="ti"><%=consulta.getHora()%></div>
-			   		<div class="ti"><%=consulta.getData()%> </div> 
+			    	<div class="ti"><%=consulta.getHora()%></div>	
+			   		<div class="ti"><%=consulta.getData()%> </div>
 			   		<div class="ti"><%=consulta.getModalidade()%></div>
+			   		
 		    	</div>
 		    	<div class="btn-group" hidden="true">
 		    		<button class="btn-cancel" onclick="deletarConsulta(<%=consulta.getId()%>);">Cancelar</button>

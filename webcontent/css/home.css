@@ -148,17 +148,14 @@ footer {
 		background-color: #085683;		
 	}
 	
-	 #table .tr {
-		display: flex;
-		
-		flex-direction: row;
-		
+#table .tr {
+	
 		border-radius: 25px;
 		
 		color: #fff;
 		background-color: #238BAD;
 	}
-	
+		
 		#table .ti-group {
 			display: flex;
 			
@@ -231,11 +228,7 @@ footer {
 		text-align: center;
 	}
 	
-	.tb-1 #table{
-		
-	}
-	
 	.th-1 .th{
-		background-color:#F4A629;
+		background-color:#ffffff;
 		
 	}

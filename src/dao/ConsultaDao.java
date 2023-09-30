@@ -4,21 +4,18 @@ import util.Conexao;
 import model.Consulta;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-import java.sql.Date;
-import java.time.LocalTime;
 import java.util.ArrayList;
 
 public class ConsultaDao {	
 	private final String tabela = "consulta";
 		
-	public Consulta insert(String clinica, Date data, LocalTime hora, String modalidade, int idPaciente, int idMedico){
+	public Consulta insert(String clinica, String data, String hora, String modalidade, int idPaciente, int idMedico){
 		Conexao conn = null;
 		
 		try {
 			conn = new Conexao();
 			
-			int id = conn.retornaIDMax("consultas");
+			int id = conn.retornaIDMax("consulta");
 			
 			Consulta consulta = new Consulta();
 			consulta.setId(id);
@@ -30,10 +27,10 @@ public class ConsultaDao {
 			consulta.setIdMedico(idMedico);
 			
 			String query = String.format(
-					"INSERT INTO %s (id, clinica, data, hora, modalidade, idpaciente, idmedico) VALUES (%d, '%s', '%s', '%s', '%s', %d, %d)",
-						tabela,
+					"INSERT INTO consulta (id, clinica, data, hora, modalidade, idpaciente, idmedico) VALUES (%d, \'%s\', \'%s\', \'%s\', \'%s\', %d, %d)",
 						consulta.getId(),
 						consulta.getClinica(),
+						consulta.getData(),
 						consulta.getHora(),
 						consulta.getModalidade(),
 						consulta.getIdPaciente(),
@@ -71,8 +68,8 @@ public class ConsultaDao {
 				consulta = new Consulta();
 				consulta.setId(rs.getInt("id"));
 				consulta.setClinica(rs.getString("clinica"));
-				consulta.setData(rs.getDate("data"));
-				consulta.setHora(rs.getTime("hora").toLocalTime());
+				consulta.setData(rs.getString("data"));
+				consulta.setHora(rs.getString("hora"));
 				consulta.setModalidade(rs.getString("modalidade"));
 				consulta.setIdPaciente(rs.getInt("idpaciente"));
 				consulta.setIdMedico(rs.getInt("idmedico"));
@@ -98,7 +95,7 @@ public class ConsultaDao {
 			Consulta consulta = null;
 			
 			String query = String.format(
-					"SELECT * FROM %s WHERE idpaciente=%d;",
+					"SELECT * FROM %s WHERE idpaciente=\'%d\';",
 						tabela,
 						idPaciente
 			);
@@ -109,8 +106,8 @@ public class ConsultaDao {
 				consulta = new Consulta();
 				consulta.setId(rs.getInt("id"));
 				consulta.setClinica(rs.getString("clinica"));
-				consulta.setData(rs.getDate("data"));
-				consulta.setHora(rs.getTime("hora").toLocalTime());
+				consulta.setData(rs.getString("data"));
+				consulta.setHora(rs.getString("hora"));
 				consulta.setModalidade(rs.getString("modalidade"));
 				consulta.setIdPaciente(rs.getInt("idpaciente"));
 				consulta.setIdMedico(rs.getInt("idmedico"));
