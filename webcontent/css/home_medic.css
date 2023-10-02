@@ -3,25 +3,24 @@ html{
 }
 /*homeMedic.jps*/
 .navmed{
-	margin-right: 110px;
+	margin-left: 110px;
 }
 .navmed span{
 	display:flex;
 	flex-direction:row;
-	justify-content:flex-start;
 	align-items:center;
-	margin: 1.5%;
+	margin: 0.5cm;
 }
 .navmed span p{
 	text-transform:capitalize;
-	font-weight:600;
-	font-size:20px;
+	font-weight:450;
+	font-size:18px;
 	margin:8px;
 	color:#000000EF;
 }
 .navmed span img{
-	height:55px;
-	width:55px;
+	height:38px;
+	width:38px;
 }
 .u-name{
 	font-size: 30px;

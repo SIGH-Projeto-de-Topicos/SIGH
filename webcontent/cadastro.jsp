@@ -17,6 +17,7 @@
 <body>
 	<form id="card" method="POST" action="apis/pacientes/cadastrar.jsp">
 		<div class="title">
+			<img alt="logo" src="images/logo.png">
 			<h1>Cadastre-se</h1>
 			<p>Marque e gerencie todas as suas consultas em um só lugar.</p>
 		</div>

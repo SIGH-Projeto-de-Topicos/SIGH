@@ -65,17 +65,12 @@
     	</div>
     	<div id="table">
     		<div class="th">
-    			<div class="ti">Paciente</div>
-    			<div class="ti">Modalidade</div>
+    			<div class="ti">Pacientes</div>
     		</div>
 
 		    <div class="tr" id="" onclick="">
  		    	<div class="ti-group">
-			    	<div class="ti"></div>
-			    	<div class="ti"></div>
-			   		<div class="ti"></div>
-			    	<div class="ti"></div>
-			   		<div class="ti"></div>
+			    	<div class="ti" onclick=""></div>
  		    	</div>
  		    	<div class="btn-group" hidden="true"> -->
 		    		<button class="btn-cancel" onclick="">Cancelar</button>

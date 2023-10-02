@@ -74,7 +74,7 @@
 		
 		<div class="form-container">
 			<label>Nome</label><br>
-			<input type="text" placeholder="nome" name="nome">
+			<input type="text" placeholder="nome" name="nome" maxlength="45">
 		</div>
 		
 		<div class="form-container">
@@ -92,7 +92,7 @@
 		
 		<div class="form-container">
 			<label>CRM</label><br>
-			<input type="text" placeholder="CRM" name="CRM">
+			<input type="text" placeholder="CRM" name="CRM" maxlength="6">
 		</div>
 		
 		<div class="form-container">
@@ -125,12 +125,12 @@
 		
 		<div class="form-container">
 			<label>Email</label><br>
-			<input type="email" placeholder="email" name="email">
+			<input type="email" placeholder="email" name="email" maxlength="45">
 		</div>
 		
 		<div class="form-container">
 			<label>Senha</label><br>
-			<input type="password" placeholder="senha" name="senha">
+			<input type="password" placeholder="senha" name="senha" minlength="8" maxlength="45">
 		</div>
 		<button class="button2">cadastrar</button>
 	</form>

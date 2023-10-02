@@ -83,10 +83,12 @@
 			   		<div class="ti"><%=consulta.getModalidade()%></div>
 			   		
 		    	</div>
+		    	<!--  
 		    	<div class="btn-group" hidden="true">
-		    		<button class="btn-cancel" onclick="deletarConsulta(<%=consulta.getId()%>);">Cancelar</button>
-		    		<button class="btn-edit" onclick="editarConsulta(<%=consulta.getId()%>);">Editar</button>
+		    		<button class="btn-cancel" onclick="deletarConsulta(<-%=consulta.getId()%>);">Cancelar</button>
+		    		<button class="btn-edit" onclick="editarConsulta(<-%=consulta.getId()%>);">Editar</button>
 		    	</div>
+		    	-->
 		    </div>
 		<%
 			}

@@ -1,0 +1,74 @@
+@charset "ISO-8859-1";
+.loading-frame{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	height: 1000px;
+}
+
+.loading-dots{
+	background:#9f9f9f;
+	border-radius: 100px;
+	width: 30px;
+	height: 30px;
+	margin:15px;
+}
+
+.loading-dots{
+	animation-name: loading;
+	animation-duration: 1.5s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	animation-delay: 0s;
+}
+
+
+@keyframes loading{
+	0%{
+		background:linear-gradient(90deg,#9f9f9f,#bfbfbf);
+		transform: translate(0px,0px);	
+	}
+	25%{
+		background:linear-gradient(90deg,#9f9f9f,#bfbfbf);
+		transform: translate(0px,-25px);
+	}
+	50%{
+		transform: translate(0px,25px);
+	}
+	75%{
+		background:linear-gradient(-90deg,#bfbfbf,#9f9f9f);
+		transform: translate(0px,-25px);
+	}
+	100%{
+		background:linear-gradient(-90deg,#bfbfbf,#9f9f9f);
+		transform: translate(0px,0px);
+	}
+
+}
+
+#on{
+	animation-name: on;
+	animation-duration:5s
+}
+@keyframe on{
+	50%{
+		color: #ffffff;
+		background-color: #3f94bd45;			
+	}
+	100%{
+		color: #ffffff;
+		background-color: #3f94bd;			
+	}
+}
+
+#off{
+	animation-name:off;
+	animation-duration:5s
+}
+@keyframe off{
+	50%{
+		color: #111111;
+		background-color: fdfdfd;
+	}
+}

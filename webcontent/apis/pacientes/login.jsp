@@ -18,3 +18,21 @@
 		response.sendRedirect("../../home.jsp");
 	}
 %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet" href="../../css/animations.css">
+<title>Insert title here</title>
+</head>
+<body>
+	<div class="loading-frame">
+		<div class="loading-dots">
+		</div>
+		<div class="loading-dots">
+		</div>
+		<div class="loading-dots">
+		</div>		
+	</div>
+</body>
+</html>
