@@ -74,9 +74,9 @@ String[] especialidades = {
 				<%} %>	
 			</select>
 		
-			<input type="date" name="date" required>
+			<input type="date" name="date" id="date" onInput="chkDate()" required>
 			
-			<input type="time" name="time" required>
+			<input type="time" name="time" id="time" onInput="chkTime()" required>
 			
 			<select name="especialidade" required>
 				<option value="" disabled selected>Especialidade</option>
@@ -90,7 +90,7 @@ String[] especialidades = {
 					}
 				%>				
 			</select>
-			<select name="idMedico"> 
+			<select name="idMedico" required> 
 				<option value=" " disabled selected>Médico</option>
 				<%
 					for(Medico med:medico){
@@ -100,7 +100,7 @@ String[] especialidades = {
 					</option>
 				<%}%>
 			</select>
-			<div id="btn-container">
+			<div id="btn-container" >
 				<label for="presencial" class="btn-selected" id="presencial-label">
 					Presencial
 					<input type="radio" id="presencial" name="modalidade" value="presencial" oninput="updateCheckbox()" checked hidden>

@@ -42,7 +42,7 @@ function chAction(button){
 	var path = document.querySelector("form");
 	let btn1 = document.getElementById("on"),
 		btn2 = document.getElementById("off");
-		
+			
 		switch(button){
 		case 0:
 			path.setAttribute('action','apis/pacientes/login.jsp');

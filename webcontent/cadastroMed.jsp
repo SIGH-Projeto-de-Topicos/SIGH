@@ -63,6 +63,8 @@
 	<meta charset="ISO-8859-1">
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="css/cadastro.css">
+	<script src="js/cadastro.js" type="text/javascript"></script>
+	
 	<title>Cadastrar Médico</title>
 </head>
 <body>

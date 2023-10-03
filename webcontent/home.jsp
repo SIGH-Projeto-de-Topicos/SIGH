@@ -55,6 +55,7 @@
 			<a href="#">Solicitar Consulta</a>
 			<a href="#">Meus Dados</a>
 			<a href="#">Termos de Serviço</a>
+			<a href="index.jsp">log out</a>
     	</div>
     </nav>
     <article>

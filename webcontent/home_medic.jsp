@@ -56,6 +56,7 @@
 			<a href="#">Solicitar Consulta</a>
 			<a href="#">Meus Dados</a>
 			<a href="#">Termos de Serviço</a>
+			<a href="index.jsp">log out</a>
     	</div>
     </nav>
     <article>
@@ -66,8 +67,8 @@
     		<p><%=medico.getHospital()%></p>
     	</span>
     	
-    	<span onclick="refresh()">
-    		<img alt="refresh" src="images/refresh.svg" onclick="console.log('click')">
+    	<span onclick="location.reload()">
+    		<img alt="refresh" src="images/refresh.svg">
     		<p>atualizar</p>
     	</span>
     	
