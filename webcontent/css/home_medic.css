@@ -13,20 +13,49 @@ html{
 }
 .navmed span p{
 	text-transform:capitalize;
-	font-weight:450;
-	font-size:18px;
-	margin:8px;
-	color:#000000EF;
+	font-weight:750;
+	font-size:25px;
+	margin:10px;
 }
 .navmed span img{
-	height:38px;
-	width:38px;
+	height:40px;
+	width:40px;
 }
 .u-name{
-	font-size: 30px;
-	font-weight: 600;
-	padding-top: 10px;
-  	padding-bottom: 10px;	
+	font-size: 25px;
+	font-weight: 400;
+	padding-left: 80px;	
+	
+	color:#1f1f1f;
+}
+.resume{
+	display: flex;
+	flex-direction: row;
+	justify-content:center;
+	align-items:center;
+	
+	
+	margin-left:130px;
+	margin-right:80px;
+	
+	padding:20px;
+	
+	
+	border:0.1px solid #afafaf;
+	border-radius: 15px;
+	
+}
+
+.resume .next{
+	color:#1f1f1f;
+	
+	background:white;
+	
+	font-size:18px;
+	font-family:sans-serif;
+	
+	border: 0px;
+	
 }
 
 /*viewConsulta.jsp*/
@@ -44,8 +73,8 @@ html{
 	align-items: center;
 	align-self: stretch; 
 	
-	border-radius:15px;
-	padding: 3px 60px;
+	border-radius:25px;
+	padding: 25px 60px;
 	margin: 3px 150px;
 	
 	font-size: 0.75cm;

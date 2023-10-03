@@ -122,7 +122,43 @@ public class ConsultaDao {
 			return new ArrayList<Consulta>();
 		}
 	}
-	
+	public ArrayList<Consulta> getConsultas(int idMedico) {
+		Conexao conn = null;
+		
+		try {
+			conn = new Conexao();
+			
+			ArrayList<Consulta> consultas = new ArrayList<Consulta>();
+			Consulta consulta = null;
+			
+			String query = String.format(
+					"SELECT * FROM %s WHERE idmedico=\'%d\';",
+						tabela,
+						idMedico
+			);
+			
+			ResultSet rs = conn.executeQuery(query);
+			
+			while (rs.next()) {
+				consulta = new Consulta();
+				consulta.setId(rs.getInt("id"));
+				consulta.setClinica(rs.getString("clinica"));
+				consulta.setData(rs.getString("data"));
+				consulta.setHora(rs.getString("hora"));
+				consulta.setModalidade(rs.getString("modalidade"));
+				consulta.setIdPaciente(rs.getInt("idpaciente"));
+				consulta.setIdMedico(rs.getInt("idmedico"));
+				
+				consultas.add(consulta);
+			}
+			
+			return consultas;
+			
+		} catch (SQLException e) {
+			System.out.print("erro ao pegar as consultas");
+			return new ArrayList<Consulta>();
+		}
+	}
 	public void delete(int id) {
 		try {
 			Conexao conn = null;

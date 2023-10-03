@@ -1,10 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="dao.PacienteDao" %>
+<%@ page import="dao.MedicoDao" %>
+<%@ page import="model.Medico"%>
 <%@ page import="dao.ConsultaDao" %>
-<%@ page import="model.Paciente" %>
+<%@ page import="model.Consulta"%>
+<%@ page import="dao.PacienteDao" %>
+<%@ page import="model.Paciente"%>
 <%@ page import="java.sql.ResultSet" %>
 <%@ page import="java.util.ArrayList" %>
+
+<%
+	int idmed = (int)session.getAttribute("idmed");
+	session.setAttribute("id", idmed);
+	int idconsulta = (int)session.getAttribute("idcon");
+	session.setAttribute("id", idconsulta);
+	
+	Medico medico = new MedicoDao().get(idmed);
+	Consulta consulta = new ConsultaDao().get(idconsulta);
+%>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -23,20 +36,20 @@
 	<header>	
         <img src="images/logo.png">
         <div id="user">
-            <span id="name">nome</span>
+            <span id="name"><%=medico.getNome() %></span>
 			<svg onClick="openNav()" id="user-img" width="100" height="100">
 				<circle cx="50" cy="50" r="35" fill="#238BAD" />
-				<text fill="#ffffff" font-size="40" font-family="Open Sans" x="50%" y="52%" dominant-baseline="middle" text-anchor="middle">N</text>
+				<text fill="#ffffff" font-size="40" font-family="Open Sans" x="50%" y="52%" dominant-baseline="middle" text-anchor="middle"><%=medico.getNome().toUpperCase().charAt(0) %></text>
 			</svg>
         </div>
     </header>
     <div id="sidenav-background" onClick="closeNav()"></div>
     <nav id="sidenav">
     	<div id="sidenav-title">
-    		<span id="sidebar-name">nome</span>
+    		<span id="sidebar-name"><%=medico.getNome()%></span>
     		<svg id="user-img" width="100" height="100">
 				<circle cx="50" cy="50" r="40" fill="#238BAD" />
-				<text >N</text>
+				<text ><%=medico.getNome().toUpperCase().charAt(0) %></text>
 			</svg>
     	</div>
     	<div id="sidenav-links"> 
@@ -48,33 +61,35 @@
     </nav>
     <article>
     
-    
+    <%
+    	Paciente paciente = new PacienteDao().get(consulta.getIdPaciente());
+    %>
     <div class="tb-1">
-    	<svg class="user.photo" width="200" height="200">
-    		<circle cx="50%" cy="50%" r="40%" fill="#238BAD"/>
-    		<text fill="#ffffff" font-size="30%" font-family="Open Sans" x="50%" y="50%"></text>
+    	<svg class="user.photo" width="150" height="150">
+    		<circle cx="50%" cy="50%" r="50%" fill="#238BAD"/>
+    		<text fill="#ffffff" font-size="60px" font-family="Open Sans" x="50%" y="50%" dominant-baseline="middle" text-anchor="middle"><%=paciente.getNome().toUpperCase().charAt(0) %></text>
     	</svg>
-    	<span class="u-name">nome</span>
+    	<H2><%=paciente.getNome() %></H2>
     	<div class="th-1">Dados da consulta</div>
     	
     	<div class="tr-1">
     		<div class="ti-1">Horário</div>
-			<div class="ti-1"><% %></div>
+			<div class="ti-1"><%=consulta.getHora() %></div>
     	</div>
     	
     	<div class="tr-1">
     		<div class="ti-1">Data</div>
-			<div class="ti-1">Data_consulta</div>
+			<div class="ti-1"><%=consulta.getData() %></div>
     	</div>
     	
     	<div class="tr-1">
     		<div class="ti-1">Especialidade</div>
-			<div class="ti-1">Data_especialidade</div>
+			<div class="ti-1"><%=medico.getEspecialidade()%></div>
     	</div> 
     	
     	<div class="tr-1">
     		<div class="ti-1">Modalidade</div>
-			<div class="ti-1">Data_modalidade</div>
+			<div class="ti-1"><%=consulta.getModalidade()%></div>
     	</div>
     	   	    	
     </div>	

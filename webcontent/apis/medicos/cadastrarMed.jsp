@@ -12,7 +12,7 @@
 				request.getParameter("UF"), 
 				request.getParameter("CRM"), 
 				request.getParameter("convenio"), 
-				request.getParameter("senha"));
+				request.getParameter("password"));
 		if(med == null){
 			response.sendRedirect("../../cadastroMed.jsp");
 		}else{

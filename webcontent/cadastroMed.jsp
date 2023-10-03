@@ -63,7 +63,7 @@
 	<meta charset="ISO-8859-1">
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="css/cadastro.css">
-	<title>Insert title here</title>
+	<title>Cadastrar Médico</title>
 </head>
 <body>
 	<form id="card" action="apis/medicos/cadastrarMed.jsp" method="GET">
@@ -79,13 +79,13 @@
 		
 		<div class="form-container">
 			<label>UF</label><br>
-			<select id="form-select">
+			<select id="form-select" name="UF">
 				
 				<option value="" disabled selected>UF</option>
 				<%
 					for(String UF:UF){
 				%>
-					<option name="UF" value="<%=UF%>"><%=UF%></option>
+					<option  value="<%=UF%>"><%=UF%></option>
 				<%}%>
 			</select>
 		</div>
@@ -97,12 +97,12 @@
 		
 		<div class="form-container">
 			<label>Especialidade</label>
-			<select id="form-select">
+			<select id="form-select" name="especialidade">
 				<option value="" disabled selected>especialidade</option>
 				<%
 					for(String especialidade:especialidades){
 				%>
-					<option value="<%=especialidade%>" name="especialidade"><%=especialidade%></option>
+					<option value="<%=especialidade%>"><%=especialidade%></option>
 				<%
 					}
 				%>
@@ -111,12 +111,12 @@
 		
 		<div class="form-container">
 			<label>Hospital</label><br>
-			<select id="form-select">
+			<select id="form-select" name="convenio">
 				<option value="" disabled selected>convenio</option>
 					<%
 						for(String convenios:convenios){
 					%>
-						<option name="convenio" value="<%=convenios%>"><%=convenios%></option>
+						<option value="<%=convenios%>"><%=convenios%></option>
 					<%
 						}
 					%>
@@ -130,7 +130,11 @@
 		
 		<div class="form-container">
 			<label>Senha</label><br>
-			<input type="password" placeholder="senha" name="senha" minlength="8" maxlength="45">
+			<input type="password" placeholder="senha" name="password" minlength="8" maxlength="45">
+		</div>
+		<div class="form-container">
+			<label>Confirmar Senha</label><br>
+			<input type="password" placeholder="senha" name="confirm-password" minlength="8" maxlength="45">
 		</div>
 		<button class="button2">cadastrar</button>
 	</form>
